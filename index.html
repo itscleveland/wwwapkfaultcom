@@ -9,7 +9,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #cccccc;
             margin: 0;
             padding: 0;
             transition: background-color 0.5s, color 0.5s;
@@ -34,18 +34,13 @@
             padding: 20px;
         }
         .app-item {
-            background-color: white;
+            background-color: light-grey;
             margin: 10px;
             padding: 20px;
             width: 200px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            color: #333;
-        }
-        body.dark-mode .app-item {
-            background-color: #1e1e1e;
-            color: #fff;
         }
         .app-item h3 {
             font-size: 18px;
@@ -76,22 +71,12 @@
             margin-left: auto;
             margin-right: auto;
         }
-        body.dark-mode .form-container {
-            background-color: #333;
-        }
         .form-container input, .form-container textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
-            color: #333;
-        }
-        body.dark-mode .form-container input,
-        body.dark-mode .form-container textarea {
-            color: #fff;
-            background-color: #444;
-            border-color: #555;
         }
         .form-container button {
             width: 100%;
@@ -147,7 +132,7 @@
 <section id="app-list">
     <h2 style="text-align: center; margin-top: 40px;">Available Apps</h2>
     <div class="app-list">
- <!-- App 1 -->
+  <!-- App 1 -->
         <div class="app-item">
             <h3>App 1: Task Manager</h3>
             <p>Organize your tasks and improve productivity.</p>
@@ -161,53 +146,54 @@
             <p class="price">Ksh 200</p>
             <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
         </div>
-        <!-- App 3 -->
-        <div class="app-item">
-            <h3>App 3: Peacock Premium</h3>
-            <p>Stream your favorite shows, movies, and live sports ad-free with exclusive content from NBCUniversal.</p>
-            <p class="price">Ksh 350</p>
-            <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Request This App</button>
-        </div>
+       <!-- App 3 -->
+<div class="app-item">
+    <h3>App 3: Peacock Premium</h3>
+    <p>Stream your favorite shows, movies, and live sports ad-free with exclusive content from NBCUniversal.</p>
+    <p class="price">Ksh 250</p>
+    <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Request This App</button>
+</div>
 
-        <!-- App 4 -->
-        <div class="app-item">
-            <h3>App 4: Netflix Premium</h3>
-            <p>Access Netflix's full library of movies, TV shows, and originals in 4K, ad-free, on up to 4 devices.</p>
-            <p class="price">Ksh 320</p>
-            <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Request This App</button>
-        </div>
+<!-- App 4 -->
+<div class="app-item">
+    <h3>App 4: Netflix Premium</h3>
+    <p>Access Netflix's full library of movies, TV shows, and originals in 4K, ad-free, on up to 4 devices.</p>
+    <p class="price">Ksh 300</p>
+    <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Request This App</button>
+</div>
 
-        <!-- App 5 -->
-        <div class="app-item">
-            <h3>App 5: Truecaller Gold</h3>
-            <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
-            <p class="price">Ksh 180</p>
-            <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Request This App</button>
-        </div>
+<!-- App 5 -->
+<div class="app-item">
+    <h3>App 5: Truecaller Gold</h3>
+    <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
+    <p class="price">Ksh 180</p>
+    <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Request This App</button>
+</div>
 
-        <!-- App 6 -->
-        <div class="app-item">
-            <h3>App 6: Spotify Premium</h3>
-            <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
-            <p class="price">Ksh 250</p>
-            <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Request This App</button>
-        </div>
+<!-- App 6 -->
+<div class="app-item">
+    <h3>App 6: Spotify Premium</h3>
+    <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
+    <p class="price">Ksh 250</p>
+    <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Request This App</button>
+</div>
 
-        <!-- App 7 -->
-        <div class="app-item">
-            <h3>App 7: YouTube Premium</h3>
-            <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Request This App</button>
-        </div>
+<!-- App 7 -->
+<div class="app-item">
+    <h3>App 7: YouTube Premium</h3>
+    <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
+    <p class="price">Ksh 200</p>
+    <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Request This App</button>
+</div>
 
-        <!-- App 8 -->
-        <div class="app-item">
-            <h3>App 8: Startimes VIP On</h3>
-            <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
-            <p class="price">Ksh 280</p>
-            <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Request This App</button>
-        </div>
+<!-- App 8 -->
+<div class="app-item">
+    <h3>App 8: Startimes VIP On</h3>
+    <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
+    <p class="price">Ksh 280</p>
+    <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Request This App</button>
+</div>
+
     </div>
 </section>
 
@@ -224,7 +210,7 @@
             <label for="appname">App Name:</label>
             <input type="text" id="appname" name="appname" readonly required>
 
-            <label for="description">Mpesa message:</label>
+            <label for="description"> Mpesa message:</label>
             <textarea id="description" name="description" rows="8"></textarea>
 
             <h3>How would you like to receive the password?</h3>
@@ -240,6 +226,9 @@
 
             <button type="submit">Submit Request</button>
         </form>
+        
+        <!-- Optional: Displaying feedback messages -->
+        <div id="form-response" style="display:none;"></div>
     </div>
 </section>
 
@@ -275,30 +264,47 @@
 
     let currentApp = '';  
     let currentAppPassword = '';  
+    let userPasswordMethod = ''; 
 
     function openRequestForm(appName, password, downloadLink) {
         document.getElementById('form-container').style.display = 'block';
         document.getElementById('appname').value = appName;
         currentApp = appName;
-        currentAppPassword = password;
-        appPasswords[appName].downloadLink = downloadLink;
+        currentAppPassword = password; 
+        appPasswords[appName].downloadLink = downloadLink; 
     }
 
+    // Handle form submission and send email
     function submitForm(event) {
-        event.preventDefault();
-        alert("Your request has been submitted! Please wait while we verify your payment.");
+        event.preventDefault();  // Prevent the form from submitting immediately
 
-        // Simulate payment verification and show the vault
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const appname = document.getElementById('appname').value;
+        const description = document.getElementById('description').value;
+        const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
+
+        // Construct the mailto link with form data
+        let mailtoLink = `mailto:clevelandoa56@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
+
+        // Open the email client with the populated data
+        window.location.href = mailtoLink;
+
+        // Show confirmation message
+        alert("Your request has been submitted! Please wait while we verify your payment.");
+        
         setTimeout(function() {
             alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
-            document.getElementById('vault').style.display = 'block';  // Show the vault section
-        }, 2000);  // Simulate a 2-second delay for payment verification
+            document.getElementById('vault').style.display = 'block';
+        }, 2000);
     }
 
+    // Dark Mode Toggle
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
     }
 
+    // Password Checking Function for Vault Access
     function checkPassword() {
         let enteredPassword = document.getElementById('vault-password').value;
         if (enteredPassword === currentAppPassword) {
@@ -329,7 +335,9 @@
         }, 1000);
     }
 
+    // Start Countdown on page load
     window.onload = startCountdown;
+
 </script>
 
 </body>
