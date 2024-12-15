@@ -174,17 +174,36 @@
             background-color: #0056b3;
             box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
         }
+        .video-container {
+            margin-top: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="description">Download the Free Snapchat Gold App now!</div>
+        
+        <!-- Video Section -->
+        <div class="video-container">
+            <video controls>
+                <source src="videos/your-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
         <a href="https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing" 
            class="download-button" 
            target="_blank">Download Now</a>
     </div>
 </body>
 </html>
+
 
 
   <!-- App 1 -->
