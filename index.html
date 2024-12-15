@@ -41,6 +41,11 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            color: #333;
+        }
+        body.dark-mode .app-item {
+            background-color: #1e1e1e;
+            color: #fff;
         }
         .app-item h3 {
             font-size: 18px;
@@ -71,12 +76,22 @@
             margin-left: auto;
             margin-right: auto;
         }
+        body.dark-mode .form-container {
+            background-color: #333;
+        }
         .form-container input, .form-container textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
+            color: #333;
+        }
+        body.dark-mode .form-container input,
+        body.dark-mode .form-container textarea {
+            color: #fff;
+            background-color: #444;
+            border-color: #555;
         }
         .form-container button {
             width: 100%;
@@ -132,7 +147,7 @@
 <section id="app-list">
     <h2 style="text-align: center; margin-top: 40px;">Available Apps</h2>
     <div class="app-list">
-        <!-- App 1 -->
+ <!-- App 1 -->
         <div class="app-item">
             <h3>App 1: Task Manager</h3>
             <p>Organize your tasks and improve productivity.</p>
@@ -144,75 +159,52 @@
             <h3>App 2: Fitness Tracker</h3>
             <p>Track your workouts and health progress.</p>
             <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWOtrackerRD456', 'fitness_tracker.apk')">Request This App</button>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
         </div>
         <!-- App 3 -->
         <div class="app-item">
             <h3>App 3: Peacock Premium</h3>
-            <p>The best of entertainment unlocked with Peacock Premium!</p>
-            <p>Ad-Free Streaming: Enjoy uninterrupted streaming of your favorite shows and movies.</p>
-            <p>Exclusive Originals: Watch Peacock exclusives like The Office, Yellowstone, Dr. Death, and more.</p>
-            <p>Live Sports: Get access to live sports events, including the NFL, Premier League soccer, WWE, and more.</p>
-            <p>Universal Library: Stream timeless classics, popular series, and blockbuster movies from Universal Pictures, DreamWorks, and NBCUniversal networks.</p>
-            <p class="price">Ksh 250</p>
+            <p>Stream your favorite shows, movies, and live sports ad-free with exclusive content from NBCUniversal.</p>
+            <p class="price">Ksh 350</p>
             <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Request This App</button>
         </div>
+
         <!-- App 4 -->
         <div class="app-item">
             <h3>App 4: Netflix Premium</h3>
-            <p>Unlock the ultimate streaming experience with Netflix Premium. Enjoy unlimited access to Netflix's massive library of movies, TV shows, and originals in stunning 4K Ultra HD. Stream on up to 4 devices simultaneously, all ad-free. Perfect for binge-watching your favorite content without interruptions!</p>
-            <p class="price">Ksh 300</p>
+            <p>Access Netflix's full library of movies, TV shows, and originals in 4K, ad-free, on up to 4 devices.</p>
+            <p class="price">Ksh 320</p>
             <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Request This App</button>
         </div>
+
         <!-- App 5 -->
         <div class="app-item">
             <h3>App 5: Truecaller Gold</h3>
-            <p>Enjoy an ad-free experience with enhanced features:</p>
-            <p>Premium Caller ID: See who's calling with enhanced details and more accurate information.</p>
-            <p>Advanced Spam Blocking: Automatically block spam and robocalls.</p>
-            <p>Customizable Themes: Personalize the app with exclusive themes and colors.</p>
-            <p>Contact Requests: Send "Who viewed my profile?" requests and see who checked out your profile.</p>
-            <p>Priority Support: Get faster assistance with Truecaller's premium customer support.</p>
+            <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
             <p class="price">Ksh 180</p>
             <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Request This App</button>
         </div>
+
         <!-- App 6 -->
         <div class="app-item">
             <h3>App 6: Spotify Premium</h3>
-            <p>Key Features of Spotify Premium:</p>
-            <p>Ad-Free Listening: Enjoy uninterrupted music without ads.</p>
-            <p>Offline Mode: Download your favorite tracks and listen offline.</p>
-            <p>Unlimited Skips: Skip any song as many times as you want.</p>
-            <p>High-Quality Audio: Listen to music in superior sound quality (320 kbps).</p>
-            <p>Access to All Content: Get access to Spotify's full music library and exclusive playlists.</p>
-            <p>Cross-Device Syncing: Seamlessly switch between devices while listening.</p>
-            <p>Perfect for music lovers who want the ultimate listening experience!</p>
+            <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
             <p class="price">Ksh 250</p>
             <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Request This App</button>
         </div>
+
         <!-- App 7 -->
         <div class="app-item">
             <h3>App 7: YouTube Premium</h3>
-            <p>Key Features of YouTube Premium:</p>
-            <p>Ad-Free Videos: Enjoy YouTube without interruptions from ads.</p>
-            <p>Offline Playback: Download videos to watch offline anytime, anywhere.</p>
-            <p>Background Play: Keep videos playing in the background while using other apps.</p>
-            <p>YouTube Music Premium: Access millions of songs and ad-free music streaming.</p>
-            <p>YouTube Originals: Watch exclusive movies and shows from YouTube creators.</p>
-            <p>Enhanced Video Quality: Stream videos in high-definition without buffering.</p>
+            <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
             <p class="price">Ksh 200</p>
             <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Request This App</button>
         </div>
+
         <!-- App 8 -->
         <div class="app-item">
             <h3>App 8: Startimes VIP On</h3>
-            <p>Key Features of StarTimes ON VIP:</p>
-            <p>Access to Premium Content: Enjoy exclusive movies, series, and live sports events.</p>
-            <p>Wide Range of Channels: Stream a variety of TV channels including local and international content.</p>
-            <p>On-Demand Shows: Watch your favorite shows anytime with unlimited on-demand streaming.</p>
-            <p>High-Quality Streaming: Experience HD quality videos for a superior viewing experience.</p>
-            <p>Multiple Device Support: Watch across various devices like smartphones, smart TVs, and tablets.</p>
-            <p>Perfect for anyone looking to access premium TV content and enjoy seamless streaming on the go!</p>
+            <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
             <p class="price">Ksh 280</p>
             <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Request This App</button>
         </div>
@@ -232,7 +224,7 @@
             <label for="appname">App Name:</label>
             <input type="text" id="appname" name="appname" readonly required>
 
-            <label for="description"> Mpesa message:</label>
+            <label for="description">Mpesa message:</label>
             <textarea id="description" name="description" rows="8"></textarea>
 
             <h3>How would you like to receive the password?</h3>
@@ -248,9 +240,6 @@
 
             <button type="submit">Submit Request</button>
         </form>
-        
-        <!-- Optional: Displaying feedback messages -->
-        <div id="form-response" style="display:none;"></div>
     </div>
 </section>
 
@@ -286,47 +275,30 @@
 
     let currentApp = '';  
     let currentAppPassword = '';  
-    let userPasswordMethod = ''; 
 
     function openRequestForm(appName, password, downloadLink) {
         document.getElementById('form-container').style.display = 'block';
         document.getElementById('appname').value = appName;
         currentApp = appName;
-        currentAppPassword = password; 
-        appPasswords[appName].downloadLink = downloadLink; 
+        currentAppPassword = password;
+        appPasswords[appName].downloadLink = downloadLink;
     }
 
-    // Handle form submission and send email
     function submitForm(event) {
-        event.preventDefault();  // Prevent the form from submitting immediately
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const appname = document.getElementById('appname').value;
-        const description = document.getElementById('description').value;
-        const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
-
-        // Construct the mailto link with form data
-        let mailtoLink = `mailto:clevelandoa56@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
-
-        // Open the email client with the populated data
-        window.location.href = mailtoLink;
-
-        // Show confirmation message
+        event.preventDefault();
         alert("Your request has been submitted! Please wait while we verify your payment.");
-        
+
+        // Simulate payment verification and show the vault
         setTimeout(function() {
             alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
-            document.getElementById('vault').style.display = 'block';
-        }, 2000);
+            document.getElementById('vault').style.display = 'block';  // Show the vault section
+        }, 2000);  // Simulate a 2-second delay for payment verification
     }
 
-    // Dark Mode Toggle
     function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
     }
 
-    // Password Checking Function for Vault Access
     function checkPassword() {
         let enteredPassword = document.getElementById('vault-password').value;
         if (enteredPassword === currentAppPassword) {
@@ -357,9 +329,7 @@
         }, 1000);
     }
 
-    // Start Countdown on page load
     window.onload = startCountdown;
-
 </script>
 
 </body>
