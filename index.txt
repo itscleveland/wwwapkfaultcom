@@ -205,7 +205,8 @@
             <textarea id="description" name="description" rows="4"></textarea>
 
             <label for="payment-proof">MPesa Payment Proof (Screenshot or Text):</label>
-            <input type="file" id="payment-proof" name="payment-proof" accept="image/*,text/*" required>
+            <!-- Note: Formspree Free Plan does not support file uploads. Remove this if using free plan -->
+            <input type="file" id="payment-proof" name="payment-proof" accept="image/*,text/*">
 
             <h3>How would you like to receive the password?</h3>
             <label for="password-method-email">
@@ -220,8 +221,12 @@
 
             <button type="submit">Submit Request</button>
         </form>
+        
+        <!-- Optional: Displaying feedback messages -->
+        <div id="form-response" style="display:none;"></div>
     </div>
 </section>
+
 
 <section id="vault" class="vault-container">
     <h3>Enter the Password to Access the APK Vault</h3>
