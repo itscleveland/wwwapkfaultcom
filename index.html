@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request and download APKs after payment.">
+    <title>APK Vault</title>
+    <link rel="manifest" href="/manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 36px;
+        }
+        .app-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .app-item {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .app-item h3 {
+            font-size: 18px;
+        }
+        .price {
+            font-size: 20px;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .cta-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
+            padding: 20px;
+            background-color: white;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+        .vault-container {
+            display: none;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .vault-container input {
+            width: 300px;
+            margin: 10px 0;
+        }
+        .vault-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .vault-container button:hover {
+            background-color: #0056b3;
+        }
+        #countdown {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>APK Vault</h1>
+    <button onclick="toggleDarkMode()" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px;">Toggle Dark Mode</button>
+</header>
+
+<section id="app-list">
+    <h2 style="text-align: center; margin-top: 40px;">Available Apps</h2>
+    <div class="app-list">
+        <!-- App 1 -->
+        <div class="app-item">
+            <h3>App 1: Task Manager</h3>
+            <p>Organize your tasks and improve productivity.</p>
+            <p class="price">Ksh 150</p>
+            <button class="cta-button" onclick="openRequestForm('Task Manager', 'PASSWORD123', 'task_manager.apk')">Request This App</button>
+        </div>
+        <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+
+  <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+
+  <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+
+  <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+
+  <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+  <!-- App 2 -->
+        <div class="app-item">
+            <h3>App 2: Fitness Tracker</h3>
+            <p>Track your workouts and health progress.</p>
+            <p class="price">Ksh 200</p>
+            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
+        </div>
+    </div>
+</section>
+
+<section id="request-form">
+    <div class="form-container" id="form-container" style="display:none;">
+        <h3>Request Your App</h3>
+        <form id="request-form" action="https://formspree.io/f/mjkvbvaz" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="_replyto" required>
+
+            <label for="appname">App Name:</label>
+            <input type="text" id="appname" name="appname" readonly required>
+
+            <label for="description">Additional Request:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+
+            <label for="payment-proof">MPesa Payment Proof (Screenshot or Text):</label>
+            <input type="file" id="payment-proof" name="payment-proof" accept="image/*,text/*" required>
+
+            <h3>How would you like to receive the password?</h3>
+            <label for="password-method-email">
+                <input type="radio" id="password-method-email" name="password-method" value="email" required> Email
+            </label>
+            <label for="password-method-whatsapp">
+                <input type="radio" id="password-method-whatsapp" name="password-method" value="whatsapp" required> WhatsApp
+            </label>
+            <label for="password-method-sms">
+                <input type="radio" id="password-method-sms" name="password-method" value="sms" required> SMS
+            </label>
+
+            <button type="submit">Submit Request</button>
+        </form>
+    </div>
+</section>
+
+<section id="vault" class="vault-container">
+    <h3>Enter the Password to Access the APK Vault</h3>
+    <input type="text" id="vault-password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Access Vault</button>
+
+    <div id="download-link" style="display: none;">
+        <p>Your APK download link: <a href="#" id="apk-link" target="_blank">Download APK</a></p>
+    </div>
+
+    <div id="password-message" style="display: none;">
+        <p>The password will be sent to your selected method (Email, WhatsApp, or SMS) within 10 minutes after payment verification.</p>
+    </div>
+</section>
+
+<!-- Countdown Message for Time-Based Discount -->
+<div id="countdown" style="display: none;">
+    <p>Hurry up! Get 20% off your next purchase! Offer ends in <span id="time"></span></p>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2024 APK Vault. All rights reserved.</p>
+    <p>Send payment to MPesa number: <strong>0701211452</strong></p>
+</footer>
+
+<script>
+    let appPasswords = {
+        'Task Manager': {password: 'PASSWORD123', downloadLink: 'task_manager.apk'},
+        'Fitness Tracker': {password: 'PASSWORD456', downloadLink: 'fitness_tracker.apk'}
+    };
+
+    let currentApp = '';  
+    let currentAppPassword = '';  
+    let userPasswordMethod = ''; 
+
+    function openRequestForm(appName, password, downloadLink) {
+        document.getElementById('form-container').style.display = 'block';
+        document.getElementById('appname').value = appName;
+        currentApp = appName;
+        currentAppPassword = password; 
+        appPasswords[appName].downloadLink = downloadLink; 
+    }
+
+    document.getElementById('request-form').onsubmit = function(event) {
+        event.preventDefault();
+        userPasswordMethod = document.querySelector('input[name="password-method"]:checked').value;
+        alert("Your request has been submitted! Please wait while we verify your payment.");
+        
+        setTimeout(function() {
+            alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
+            document.getElementById('vault').style.display = 'block';
+            document.getElementById('password-message').style.display = 'block';
+            
+            // Show countdown after first purchase
+            localStorage.setItem('hasMadePurchase', 'true');
+            showCountdown();
+        }, 2000);
+    };
+
+    function checkPassword() {
+        const enteredPassword = document.getElementById('vault-password').value;
+        if (enteredPassword === currentAppPassword) {
+            document.getElementById('download-link').style.display = 'block';
+            document.getElementById('apk-link').href = appPasswords[currentApp].downloadLink;
+            alert("Password correct! You can now download the APK.");
+        } else {
+            alert("Incorrect password. Please try again.");
+        }
+    }
+
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    // Check for dark mode preference in localStorage
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Countdown logic for time-based discount
+    function showCountdown() {
+        let hasMadePurchase = localStorage.getItem('hasMadePurchase') === 'true';
+        if (!hasMadePurchase) return;
+
+        document.getElementById('countdown').style.display = 'block';
+        let deadline = new Date();
+        deadline.setHours(deadline.getHours() + 1); // Countdown for 1 hour from now
+
+        let countdownInterval = setInterval(function() {
+            let now = new Date();
+            let timeLeft = deadline - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('time').innerText = "Offer expired!";
+            } else {
+                let hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById('time').innerText = `${hours}:${minutes}:${seconds}`;
+            }
+        }, 1000);
+    }
+
+    // Show countdown if purchase was made
+    showCountdown();
+</script>
+
+</body>
+</html>
