@@ -152,12 +152,12 @@
 <section id="request-form">
     <div class="form-container" id="form-container" style="display:none;">
         <h3>Request Your App</h3>
-        <form id="request-form" action="https://formspree.io/f/xpwazlqe" method="POST">
+        <form id="request-form" onsubmit="submitForm(event)">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
 
             <label for="email">Your Email:</label>
-            <input type="email" id="email" name="_replyto" required>
+            <input type="email" id="email" name="email" required>
 
             <label for="appname">App Name:</label>
             <input type="text" id="appname" name="appname" readonly required>
@@ -226,17 +226,30 @@
         appPasswords[appName].downloadLink = downloadLink; 
     }
 
-    // Form submit handling (without file upload)
-    document.getElementById('request-form').onsubmit = function(event) {
-        event.preventDefault();  // Prevent the default form submission
-        userPasswordMethod = document.querySelector('input[name="password-method"]:checked').value;
+    // Handle form submission and send email
+    function submitForm(event) {
+        event.preventDefault();  // Prevent the form from submitting immediately
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const appname = document.getElementById('appname').value;
+        const description = document.getElementById('description').value;
+        const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
+
+        // Construct the mailto link with form data
+        let mailtoLink = `mailto:clevelandoa56@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
+
+        // Open the email client with the populated data
+        window.location.href = mailtoLink;
+
+        // Show confirmation message
         alert("Your request has been submitted! Please wait while we verify your payment.");
         
         setTimeout(function() {
             alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
             document.getElementById('vault').style.display = 'block';
         }, 2000);
-    };
+    }
 
     // Dark Mode Toggle
     function toggleDarkMode() {
