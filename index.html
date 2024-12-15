@@ -146,52 +146,13 @@
             <p class="price">Ksh 200</p>
             <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
         </div>
-
-  <!-- App 2 -->
-        <div class="app-item">
-            <h3>App 2: Fitness Tracker</h3>
-            <p>Track your workouts and health progress.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
-        </div>
-
-  <!-- App 2 -->
-        <div class="app-item">
-            <h3>App 2: Fitness Tracker</h3>
-            <p>Track your workouts and health progress.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
-        </div>
-
-  <!-- App 2 -->
-        <div class="app-item">
-            <h3>App 2: Fitness Tracker</h3>
-            <p>Track your workouts and health progress.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
-        </div>
-
-  <!-- App 2 -->
-        <div class="app-item">
-            <h3>App 2: Fitness Tracker</h3>
-            <p>Track your workouts and health progress.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
-        </div>
-  <!-- App 2 -->
-        <div class="app-item">
-            <h3>App 2: Fitness Tracker</h3>
-            <p>Track your workouts and health progress.</p>
-            <p class="price">Ksh 200</p>
-            <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Request This App</button>
-        </div>
     </div>
 </section>
 
 <section id="request-form">
     <div class="form-container" id="form-container" style="display:none;">
         <h3>Request Your App</h3>
-        <form id="request-form" action="https://formspree.io/f/xnnqkakp" method="POST">
+        <form id="request-form" action="https://formspree.io/f/mjkvbvaz" method="POST">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -203,10 +164,6 @@
 
             <label for="description">Additional Request:</label>
             <textarea id="description" name="description" rows="4"></textarea>
-
-            <label for="payment-proof">MPesa Payment Proof (Screenshot or Text):</label>
-            <!-- Note: Formspree Free Plan does not support file uploads. Remove this if using free plan -->
-            <input type="file" id="payment-proof" name="payment-proof" accept="image/*,text/*">
 
             <h3>How would you like to receive the password?</h3>
             <label for="password-method-email">
@@ -226,7 +183,6 @@
         <div id="form-response" style="display:none;"></div>
     </div>
 </section>
-
 
 <section id="vault" class="vault-container">
     <h3>Enter the Password to Access the APK Vault</h3>
@@ -270,71 +226,57 @@
         appPasswords[appName].downloadLink = downloadLink; 
     }
 
+    // Form submit handling (without file upload)
     document.getElementById('request-form').onsubmit = function(event) {
-        event.preventDefault();
+        event.preventDefault();  // Prevent the default form submission
         userPasswordMethod = document.querySelector('input[name="password-method"]:checked').value;
         alert("Your request has been submitted! Please wait while we verify your payment.");
         
         setTimeout(function() {
             alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
             document.getElementById('vault').style.display = 'block';
-            document.getElementById('password-message').style.display = 'block';
-            
-            // Show countdown after first purchase
-            localStorage.setItem('hasMadePurchase', 'true');
-            showCountdown();
         }, 2000);
     };
 
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+    }
+
+    // Password Checking Function for Vault Access
     function checkPassword() {
-        const enteredPassword = document.getElementById('vault-password').value;
+        let enteredPassword = document.getElementById('vault-password').value;
         if (enteredPassword === currentAppPassword) {
             document.getElementById('download-link').style.display = 'block';
-            document.getElementById('apk-link').href = appPasswords[currentApp].downloadLink;
-            alert("Password correct! You can now download the APK.");
+            document.getElementById('apk-link').href = '/downloads/' + appPasswords[currentApp].downloadLink;
         } else {
             alert("Incorrect password. Please try again.");
         }
     }
 
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-    }
-
-    // Check for dark mode preference in localStorage
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-    }
-
-    // Countdown logic for time-based discount
-    function showCountdown() {
-        let hasMadePurchase = localStorage.getItem('hasMadePurchase') === 'true';
-        if (!hasMadePurchase) return;
-
-        document.getElementById('countdown').style.display = 'block';
-        let deadline = new Date();
-        deadline.setHours(deadline.getHours() + 1); // Countdown for 1 hour from now
-
-        let countdownInterval = setInterval(function() {
-            let now = new Date();
-            let timeLeft = deadline - now;
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                document.getElementById('time').innerText = "Offer expired!";
+    // Countdown Timer for Discount
+    function startCountdown() {
+        let countdownDate = new Date();
+        countdownDate.setMinutes(countdownDate.getMinutes() + 10);
+        
+        let countdownFunction = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
+            
+            if (distance <= 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").style.display = 'none';
             } else {
-                let hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                document.getElementById('time').innerText = `${hours}:${minutes}:${seconds}`;
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("time").innerHTML = minutes + "m " + seconds + "s";
             }
         }, 1000);
     }
 
-    // Show countdown if purchase was made
-    showCountdown();
+    // Start Countdown on page load
+    window.onload = startCountdown;
+
 </script>
 
 </body>
