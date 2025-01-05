@@ -1,4 +1,465 @@
 <!DOCTYPE html>
+<html
+  lang="en"
+  
+  data-color-mode="auto" data-light-theme="light" data-dark-theme="dark"
+  data-a11y-animated-images="system" data-a11y-link-underlines="true"
+  >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        #chatContainer {
+            width: 600px; /* Set fixed width for chat container */
+             background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Hide overflow for a neat border radius */
+        }
+
+        #chatHistory {
+            max-height: 400px; /* Limit height for scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+            padding: 20px;
+            border-bottom: 2px solid #007BFF; /* Blue bottom border */
+        }
+
+        .message {
+            margin: 10px 0; /* Add margin to messages */
+            padding: 10px 15px; /* Add padding for better readability */
+            border-radius: 20px; /* Rounded message bubbles */
+            max-width: 70%; /* Limit message bubble width */
+        }
+
+        .user-message {
+            background-color: #007BFF; /* User message color */
+            color: white; /* White text for user message */
+            margin-left: auto; /* Align user messages to the right */
+        }
+
+        .bot-message {
+            background-color: #f1f1f1; /* Bot message color */
+            color: #333; /* Dark text for bot message */
+            margin-right: auto; /* Align bot messages to the left */
+        }
+
+        #typingIndicator {
+            display: none; /* Initially hidden */
+            font-style: italic;
+            color: #ffffff; /* White color for typing indicator */
+            margin-left: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%; /* Full width */
+            padding: 15px; /* Increased padding */
+            border: none; /* Remove default border */
+            border-top: 1px solid #ddd; /* Top border for input field */
+            border-radius: 0; /* No rounded corners on the input */
+            font-size: 16px; /* Slightly larger font */
+            box-shadow: none; /* Remove shadow */
+            outline: none; /* Remove outline */
+            
+        }
+        input[type="text"]:focus {
+            border-color: #007BFF; /* Change border color on focus */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 500px) {
+            #chatContainer {
+                width: 100%; /* Use full width on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="buttons">
+<div id="MobileDevice">
+<p id="greeting"></p>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Application</title>
+<body>
+    <section id="conversation">
+        <label></label>It's now <span id="currentTime"></span> and the location is <span id="currentLocation"></span>.<br>
+    </section>
+  <script>
+// Chatbot Script
+        document.addEventListener("DOMContentLoaded", function() {
+            setInterval(updateTimeAndLocation, 1000);
+        });
+
+        function updateTimeAndLocation() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById("currentTime").innerText = timeString;
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    document.getElementById("currentLocation").innerText = `${latitude}, ${longitude}`;
+                }, function() {
+                    document.getElementById("currentLocation").innerText = "Location access denied.";
+                });
+            } else {
+                document.getElementById("currentLocation").innerText = "Geolocation not supported.";
+            }
+        }
+
+</script>
+   
+</body>
+</html>
+
+
+
+
+
+
+
+    
+    <div id="buttons">
+        <button id="screen-size">Screen Size</button>
+        <button id="battery-status">Battery Status</button>
+        <button id="network-info">Network Information</button>
+        <button id="device-memory">Device Memory</button>
+        
+    </div>
+    <div id="output"></div>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #desktop-view-button {
+            background-color: #28a745; /* Green color for the button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px; /* Space below the button */
+            display: block; /* Make the button a block element */
+            text-align: center; /* Center the button text */
+            width: 200px; /* Fixed width for the button */
+            margin-left: auto; /* Center the button horizontally */
+            margin-right: auto; /* Center the button horizontally */
+        }
+
+        #buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1 1 calc(33% - 10px);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-10px);
+        }
+
+        #output {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #figurative-language {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #questions {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #essay-section {
+            margin: 20px auto;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        progress {
+            width: 100%;
+        }
+
+        #conversation {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            button {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+    <script src="mobile.js"></script>
+    <div id="chatContainer">
+        <div id="chatHistory"></div>
+        <div id="typingIndicator">Searching Server...</div>
+
+        
+
+        <input type="text" id="chatInput" placeholder="Type your message..." onkeydown="handleChat(event)">
+    </div>
+    <script src="chatbot1.js"></script>
+    
+ <script>
+    // Get the current time
+    const now = new Date();
+    const hours = now.getHours();
+
+    // Set the greeting based on the current time
+    let greeting;
+
+    if (hours >= 6 && hours < 12) {
+      greeting = "👋Good morning!";
+    } else if (hours >= 12 && hours < 18) {
+      greeting = "👋Good afternoon!";
+    } else {
+      greeting = "👋Good evening!";
+       }
+
+    // Display the greeting in the HTML element
+    document.getElementById("greeting").innerHTML = greeting;
+  </script> 
+    
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figurative Language Quiz</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #cccccc;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s, color 0.5s;
+        }
+
+
+        .quiz-container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-10px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #0072ff 50%, #ffffff 50%);;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+            position: relative;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1></h1>
+    <button id="startButton" class="btn">Next Stop</button>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <div id="quizContent"></div>
+        <div id="userInput"></div>
+        <button id="submitButton" class="btn">Submit Answer</button>
+        <div id="result" class="result"></div>
+    </div>
+
+<script src="pop.js"></script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nick Mutuma Search</title>
+  </head>
+  <body>
+<div id="button">
+<div id="Custom utube">
+    <form action="https://www.youtube.com/results" method="GET">
+<input type="search" name="q" placeholder="Youtube search.clevrfy" value="Elon Musk today">
+      <button type="submit">Search</button>
+    </form>
+  </body>
+</html>
+
+   
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Website Example</title>
+
+</head>
+
+<body>
+
+    <header>
+        <h1></h1>
+    </header>
+
+    <div class="content">
+        <h1></h1>
+        <button id="load-btn">Go to Website</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2055 All Rights Reserved | </p>
+    </footer>
+
+    <script>
+        document.getElementById('load-btn').addEventListener('click', function () {
+            const url = 'http://itsclevelands.gihub.io/wwwapkfaultcom/'; // Replace with your target page URL
+            const newWindow = window.open(url, '_blank'); // Open in new tab
+
+            if (newWindow) {
+                newWindow.focus();
+            } else {
+                alert('Please allow pop-ups for this website!');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +468,7 @@
     <title>APK Vault</title>
     <link rel="manifest" href="/manifest.json">
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             background-color: #cccccc;
             margin: 0;
@@ -25,7 +486,7 @@
             text-align: center;
         }
         header h1 {
-            font-size: 36px;
+            font-size: 26px;
         }
         .app-list {
             display: flex;
@@ -34,14 +495,22 @@
             padding: 20px;
         }
         .app-item {
-            background-color: light-grey;
-            margin: 10px;
+            background-color: #888;
             padding: 20px;
-            width: 200px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+        .app-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+
+
         .app-item h3 {
             font-size: 18px;
         }
@@ -63,7 +532,7 @@
         }
         .form-container {
             padding: 20px;
-            background-color: white;
+            background-color: 50%blue , 50%grey;
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
@@ -127,7 +596,11 @@
 <header>
     <h1>APK Fault</h1>
 <p>For the best experience, please view this page on desktop site/mode</p>
-    <button onclick="toggleDarkMode()" style="background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px;">Toggle Dark Mode</button>
+    <button onclick="toggleDarkMode()" style="background-color: #007bff; color: blue; padding: 10px; border: none; border-radius: 5px;">Dark Mode</button>
+    <button id="desktop-view-button" onclick="switchToDesktopView()" style="background-color: #007bff; color: blue; padding: 10px; border: none; border-radius: 5px;">Switch to Desktop View</button>
+    <script src="swdesktop.js"></script>    
+</body>
+</html>
 </header
 
 <section id="app-list">
@@ -150,7 +623,9 @@
         }
         .container {
             padding: 20px;
-            background-color: white;
+            
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: inline-block;
@@ -173,10 +648,13 @@
         }
         .download-button:hover {
             background-color: #0056b3;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
             box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
         }
         .video-container {
-            margin-top: 20px;
+            margin-top: 20px;         
+
         }
         video {
             width: 100%;
@@ -209,51 +687,7 @@
     <div class="timer" id="countdown"></div>
 
 </div>
-
-<script>
-    // Function to calculate and update the countdown
-    function updateCountdown() {
-        // Get the current time
-        const now = new Date();
-        
-        // Set the target time to 2:59 AM (EAT)
-        let targetTime = new Date(now);
-        targetTime.setHours(2);
-        targetTime.setMinutes(59);
-        targetTime.setSeconds(0);
-        targetTime.setMilliseconds(0);
-
-        // If the current time is past 2:59 AM today, set the target to 2:59 AM the next day
-        if (now > targetTime) {
-            targetTime.setDate(targetTime.getDate() + 1);
-        }
-
-        // Calculate the time difference
-        const timeDifference = targetTime - now;
-
-        // If the countdown is over, update the text
-        if (timeDifference <= 0) {
-            document.getElementById("countdown").innerHTML = "The app is now available!";
-            clearInterval(timerInterval);
-        } else {
-            // Calculate hours, minutes, and seconds
-            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            // Update the timer display
-            document.getElementById("countdown").innerHTML =
-                hours + "h " + minutes + "m " + seconds + "s ";
-        }
-    }
-
-    // Update the countdown every second
-    const timerInterval = setInterval(updateCountdown, 1000);
-
-    // Initial call to display the countdown immediately
-    updateCountdown();
-</script>
-
+<script src="apk.js"></script>
 </body>
 </html>
 
@@ -329,16 +763,16 @@
         <h3>Request Your App</h3>
         <form id="request-form" onsubmit="submitForm(event)">
             <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="Full Name(optional)" required>
 
             <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Active Email" required>
 
             <label for="appname">App Name:</label>
             <input type="text" id="appname" name="appname" readonly required>
 
             <label for="description"> Mpesa message:</label>
-            <textarea id="description" name="description" rows="8"></textarea>
+            <textarea id="description" name="description" rows="8" placeholder="Paste your Mpesa message"></textarea>
 
             <h3>How would you like to receive the password?</h3>
             <label for="password-method-email">
@@ -363,6 +797,35 @@
     <h3>Enter the Password to Access the APK Vault</h3>
     <input type="text" id="vault-password" placeholder="Enter Password">
     <button onclick="checkPassword()">Access Vault</button>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art Gallery</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; padding: 20px; }
+        .art { margin: 10px; }
+        .art-box { width: 100px; height: 100px; border: 1px solid #ccc; display: inline-block; margin: 5px; }
+        .art-input { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>CSS Art Gallery</h1>
+    <input type="text" id="cssArt" class="art-input" placeholder="e.g background-color: red;">
+    <button id="addArt">Add Art</button>
+    <div id="artGallery"></div>
+    
+    <script src="artgallery.js"></script>
+</body>
+</html>
+
+
+
+
 
     <div id="download-link" style="display: none;">
         <p>Your APK download link: <a href="#" id="apk-link" target="_blank">Download APK</a></p>
@@ -412,7 +875,7 @@
         const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
 
         // Construct the mailto link with form data
-        let mailtoLink = `mailto:clevelandoa56@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
+        let mailtoLink = `mailto:hello.innovrse@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
 
         // Open the email client with the populated data
         window.location.href = mailtoLink;
@@ -421,7 +884,7 @@
         alert("Your request has been submitted! Please wait while we verify your payment.");
         
         setTimeout(function() {
-            alert("Payment verified! The password will be sent to your chosen method within 10 minutes.");
+            alert("Once verified! The password will be sent to your chosen method within 10 minutes.");
             document.getElementById('vault').style.display = 'block';
         }, 2000);
     }
