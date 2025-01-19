@@ -347,11 +347,24 @@
     </div>
     <!-- Timer Display -->
     <div class="timer" id="countdown"></div>
-    <a href="https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing" 
-       class="download-button" 
-       target="_blank">Download Now</a>
+    <a href="javascript:void(0);" 
+   class="download-button" 
+   onclick="checkTimeAndDownload()">Download Now</a>
 
+<script>
+function checkTimeAndDownload() {
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
 
+    // Check if the time is 2:59 AM
+    if (hours === 2 && minutes === 59) {
+        window.open('https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing', '_blank');
+    } else {
+        alert("The download is only available at 2:59 AM.");
+    }
+}
+</script>
 </div>
 
 
@@ -386,6 +399,57 @@
     <p class="price">Ksh 280</p>
     <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Startimes On</button>
 </div>
+
+
+<!-- App 9 -->
+<div class="app-item">
+    <h3>App 1: Audiomark</h3>
+    <p>Enjoy unlimited music streaming with Audiomark, offering a wide variety of local and international music content.</p>
+    <p class="price">Ksh 250</p>
+    <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Audiomark</button>
+</div>
+
+<!-- App 10 -->
+<div class="app-item">
+    <h3>App 2: InShot</h3>
+    <p>InShot is the perfect app for editing videos and photos with various effects, filters, and more for social media sharing.</p>
+    <p class="price">Ksh 200</p>
+    <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">InShot</button>
+</div>
+
+<!-- App 11 -->
+<div class="app-item">
+    <h3>App 3: MovieBox</h3>
+    <p>Stream and download the latest movies, TV shows, and documentaries with MovieBox, all in HD quality.</p>
+    <p class="price">Ksh 300</p>
+    <button class="cta-button" onclick="openRequestForm('MovieBox', 'MovieBoxPassword123', 'MovieBox.apk')">MovieBox</button>
+</div>
+
+
+<!-- App 12 -->
+<div class="app-item">
+    <h3>App 5: Shazam</h3>
+    <p>Identify songs playing around you instantly with Shazam, and discover music you love with ease.</p>
+    <p class="price">Ksh 150</p>
+    <button class="cta-button" onclick="openRequestForm('Shazam', 'ShazamPassword123', 'Shazam.apk')">Shazam</button>
+</div>
+
+<!-- App 13 -->
+<div class="app-item">
+    <h3>App 6: Telegram Premium</h3>
+    <p>Upgrade to Telegram Premium for enhanced features, including faster downloads, more stickers, and a larger file size limit.</p>
+    <p class="price">Ksh 400</p>
+    <button class="cta-button" onclick="openRequestForm('Telegram Premium', 'TelegramPremium123', 'TelegramPremium.apk')">Telegram Premium</button>
+</div>
+
+<!-- App 14 -->
+<div class="app-item">
+    <h3>App 7: WPS Office Premium</h3>
+    <p>Get the full suite of office tools for documents, spreadsheets, and presentations with WPS Office Premium, the perfect productivity tool.</p>
+    <p class="price">Ksh 350</p>
+    <button class="cta-button" onclick="openRequestForm('WPS Office Premium', 'WPSPremium123', 'WPSOfficePremium.apk')">WPS Office Premium</button>
+</div>
+
 <script src="apk.js"></script>
 </body>
 </html>
