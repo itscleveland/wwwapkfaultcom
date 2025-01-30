@@ -204,7 +204,7 @@
     }
 
     .app-item {
-        background-color: #888;
+        background-color:#f9f9f9; 
         padding: 20px;
         width: 220px;
         border-radius: 12px;
