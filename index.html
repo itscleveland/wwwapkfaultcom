@@ -204,7 +204,7 @@
     }
 
     .app-item {
-        background-color: #888;
+        background-color: #f9f9f9;
         padding: 20px;
         width: 220px;
         border-radius: 12px;
@@ -245,7 +245,7 @@
 
     .form-container {
         padding: 20px;
-        background: linear-gradient(50deg, #007bff, #cccccc);
+        background: #f9f9f9;
         margin-top: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
@@ -440,7 +440,7 @@
     <p class="price">Ksh 150</p>
     <button class="cta-button" onclick="openRequestForm('Task Manager', 'PASSWORD123', 'task_manager.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demo</button>
     <div id="demo-task-manager" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
         <video width="300" controls>
@@ -468,7 +468,7 @@
     <p class="price">Ksh 200</p>
     <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demo</button>
     <div id="demo-fitness-tracker" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
         <video width="300" controls>
@@ -496,7 +496,7 @@
     <p class="price">Ksh 250</p>
     <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demo</button>
     <div id="demo-peacock-premium" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
         <video width="300" controls>
@@ -524,7 +524,7 @@
     <p class="price">Ksh 300</p>
     <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demo</button>
     <div id="demo-netflix-premium" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
         <video width="300" controls>
@@ -794,20 +794,21 @@
     </div>
     <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
     <p class="price">Ksh 180</p>
-    <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
     
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo5')">Show Demo</button>
-        <div id="demo5" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/truecaller_gold_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
-            </div>
+    </div>
+
+    <div id="demo5" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/truecaller_gold_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
         </div>
     </div>
 </div>
@@ -824,20 +825,21 @@
     </div>
     <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
     <p class="price">Ksh 250</p>
-    <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
     
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo6')">Show Demo</button>
-        <div id="demo6" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/spotify_premium_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
-            </div>
+    </div>
+
+    <div id="demo6" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/spotify_premium_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
         </div>
     </div>
 </div>
@@ -854,20 +856,21 @@
     </div>
     <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
     <p class="price">Ksh 200</p>
-    <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo7')">Show Demo</button>
-        <div id="demo7" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/youtube_premium_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
-            </div>
+    </div>
+
+    <div id="demo7" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/youtube_premium_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
         </div>
     </div>
 </div>
@@ -884,20 +887,21 @@
     </div>
     <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
     <p class="price">Ksh 280</p>
-    <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo8')">Show Demo</button>
-        <div id="demo8" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/startimes_vip_on_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
-            </div>
+    </div>
+
+    <div id="demo8" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/startimes_vip_on_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
         </div>
     </div>
 </div>
@@ -914,20 +918,21 @@
     </div>
     <p>Enjoy unlimited music streaming with Audiomark, offering a wide variety of local and international music content.</p>
     <p class="price">Ksh 250</p>
-    <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo9')">Show Demo</button>
-        <div id="demo9" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/audiomark_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
-            </div>
+    </div>
+
+    <div id="demo9" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/audiomark_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
         </div>
     </div>
 </div>
@@ -944,23 +949,26 @@
     </div>
     <p>InShot is the perfect app for editing videos and photos with various effects, filters, and more for social media sharing.</p>
     <p class="price">Ksh 200</p>
-    <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo10')">Show Demo</button>
-        <div id="demo10" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/inshot_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
-            </div>
+    </div>
+
+    <div id="demo10" class="demo-content" style="display: none;">
+        <video width="300" controls>
+            <source src="videos/inshot_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
         </div>
     </div>
 </div>
+
+
 
 <style>
     .app-info {
@@ -1004,7 +1012,7 @@
     }
 
     .expand-btn {
-        background-color: #008CBA;
+        background-color: #2196F3;
         color: white;
         padding: 5px 15px;
         border: none;
@@ -1014,14 +1022,11 @@
     }
 
     .expand-btn:hover {
-        background-color: #007bb5;
-    }
-
-    .demo-content {
-        margin-top: 15px;
-        text-align: center;
+        background-color: #0b7dda;
     }
 </style>
+
+
 
 <script>
     function toggleDemo(demoId) {
