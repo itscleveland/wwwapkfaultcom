@@ -1534,30 +1534,35 @@
   </script>
 
 
-
 <script>
-    // Function to check if the user is online
-    function checkOnlineStatus() {
-        if (!navigator.onLine) {
-            // If offline, store in sessionStorage
-            sessionStorage.setItem("wasOffline", "true");
+    (function () {
+        // Function to check if the user is offline
+        function checkOnlineStatus() {
+            if (!navigator.onLine) {
+                sessionStorage.setItem("wasOffline", "true");
+            }
         }
-    }
 
-    // Function to handle when the user comes back online
-    function handleOnline() {
-        if (sessionStorage.getItem("wasOffline") === "true") {
-            sessionStorage.removeItem("wasOffline");
-            window.location.href = "http://xx.66ghz.com/index.php?formType=login";
+        // Function to handle when the user comes back online
+        function handleOnline() {
+            if (sessionStorage.getItem("wasOffline") === "true") {
+                sessionStorage.removeItem("wasOffline");
+                location.replace("http://xx.66ghz.com/index.php?formType=login");
+            }
         }
-    }
 
-    // Event listeners for network status changes
-    window.addEventListener("offline", checkOnlineStatus);
-    window.addEventListener("online", handleOnline);
+        // Check on page load if the user was previously offline
+        document.addEventListener("DOMContentLoaded", function () {
+            if (navigator.onLine) {
+                handleOnline();
+            }
+        });
+
+        // Listen for network changes
+        window.addEventListener("offline", checkOnlineStatus);
+        window.addEventListener("online", handleOnline);
+    })();
 </script>
-
-
 
 
 
