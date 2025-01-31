@@ -3,6 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Games Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .banner img {
+            width: 100px;
+            height: 60px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .banner img:hover {
+            transform: scale(1.1);
+        }
+        .banner h2 {
+            margin: 0;
+            animation: fadeIn 2s infinite alternate;
+        }
+        .cta-button {
+            background: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #e68900;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="game-images">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Counter-Strike_1.6_logo.png" alt="Counter-Strike">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Grand_Theft_Auto_V_logo.svg" alt="GTA V">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Call_of_Duty_Warzone_logo.png" alt="Call of Duty Warzone">
+        </div>
+        <h2>🔥 PC GAMES COMING SOON! 🔥</h2>
+        <button class="cta-button" onclick="alert('We will notify you when they are available')">Stay Updated</button>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Viewed in Desktop Mode</title>
     <style>
         body {
