@@ -1,0 +1,82 @@
+
+
+
+
+<!-- Search Bar Container -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search this page...">
+    <button onclick="searchPage()">Search</button>
+    <p id="searchResults"></p>
+</div>
+
+<style>
+    /* Search Bar Styling */
+    .search-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    #searchInput {
+        padding: 10px;
+        width: 250px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #searchResults {
+        color: red;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* Highlight search results */
+    mark {
+        background-color: yellow;
+        color: black;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+function searchPage() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let elements = document.body.getElementsByTagName("*");
+    let found = false;
+
+    // Clear previous highlights
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].innerHTML = elements[i].innerHTML.replace(/<mark>|<\/mark>/g, "");
+    }
+
+    // Search and highlight matches
+    for (let i = 0; i < elements.length; i++) {
+        let element = elements[i];
+
+        if (element.childNodes.length === 1 && element.innerText.toLowerCase().includes(input) && input !== "") {
+            element.innerHTML = element.innerHTML.replace(new RegExp(input, "gi"), (match) => `<mark>${match}</mark>`);
+            found = true;
+        }
+    }
+
+    // Show search results message
+    document.getElementById("searchResults").innerText = found ? "Results highlighted!" : "No results found!";
+}
+</script>
+
+

