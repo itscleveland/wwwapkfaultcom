@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Hacking Console</title>
+    <style>
+        body {
+            background: black;
+            color: limegreen;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #console {
+            width: 100%;
+            height: 90vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-size: 16px;
+            border: 1px solid limegreen;
+            padding: 10px;
+        }
+
+        input {
+            width: 100%;
+            background: black;
+            color: limegreen;
+            border: none;
+            outline: none;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+        }
+
+        .blink {
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="console">[System Ready] Type a command and press ENTER...</div>
+    <input type="text" id="commandInput" autofocus placeholder="Enter command...">
+
+    <script>
+        const consoleBox = document.getElementById("console");
+        const commandInput = document.getElementById("commandInput");
+
+        function logToConsole(message) {
+            consoleBox.innerHTML += "\n" + message;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+        }
+
+        function getSystemInfo() {
+            navigator.getBattery().then(battery => {
+                let batteryStatus = battery.charging ? "Charging" : "Not Charging";
+                logToConsole(`[Battery] ${Math.round(battery.level * 100)}% - ${batteryStatus}`);
+            });
+
+            let connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            let networkType = connection ? connection.effectiveType.toUpperCase() : "UNKNOWN";
+            logToConsole(`[Network] ${networkType}`);
+            
+            logToConsole(`[Device] OS: ${navigator.platform}, Browser: ${navigator.userAgent}`);
+            logToConsole(`[Screen] ${window.screen.width}x${window.screen.height}`);
+        }
+
+        function executeCommand(command) {
+            logToConsole("> " + command);
+
+            if (command.startsWith("scan network")) {
+                logToConsole("[Scanning...]");
+                setTimeout(() => {
+                    logToConsole("Found 5 devices:");
+                    logToConsole("192.168.1.1 - Router");
+                    logToConsole("192.168.1.10 - Laptop");
+                    logToConsole("192.168.1.20 - Phone");
+                    logToConsole("192.168.1.30 - Smart TV");
+                    logToConsole("192.168.1.40 - Unknown Device ⚠️");
+                }, 2000);
+            }
+
+            else if (command === "read system") {
+                getSystemInfo();
+            }
+
+            else if (command.startsWith("bruteforce")) {
+                let target = command.split(" ")[1] || "unknown";
+                logToConsole(`[Bruteforcing] ${target}...`);
+                setTimeout(() => logToConsole("[Access Granted] Password: P@ssw0rd123"), 3000);
+            }
+
+            else if (command === "spy cam") {
+                logToConsole("[Accessing Webcam...]");
+                setTimeout(() => logToConsole("[ERROR] Permission Denied!"), 2000);
+            }
+
+            else if (command.startsWith("ddos attack")) {
+                logToConsole("[DDoS Attack Initialized] Sending 10,000 requests/sec...");
+                setTimeout(() => logToConsole("[Server Down] Target Unreachable."), 5000);
+            }
+
+            else if (command === "hack bitcoin") {
+                logToConsole("[Hacking Bitcoin Wallet...]");
+                setTimeout(() => logToConsole("[Success] 5 BTC transferred to anonymous wallet"), 4000);
+            }
+
+            else if (command === "matrix") {
+                document.body.innerHTML = `<style>
+                    @keyframes matrix {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                    .matrix { color: #0f0; font-size: 18px; position: absolute; width: 100%; height: 100%; overflow: hidden; background: black; }
+                    .matrix span { position: absolute; animation: matrix 2s infinite linear; }
+                </style><div class='matrix'></div>`;
+                let matrix = document.querySelector(".matrix");
+                for (let i = 0; i < 100; i++) {
+                    let span = document.createElement("span");
+                    span.innerHTML = Math.random() > 0.5 ? "0" : "1";
+                    span.style.left = Math.random() * 100 + "%";
+                    span.style.animationDuration = Math.random() * 2 + 1 + "s";
+                    span.style.top = Math.random() * 100 + "%";
+                    matrix.appendChild(span);
+                }
+            }
+
+            else if (command === "fbi alert") {
+                logToConsole("[⚠️ FBI WARNING] Your actions have been logged.");
+                setTimeout(() => alert("⚠️ FBI Warning: Stop hacking now!"), 3000);
+            }
+
+            else if (command === "self destruct") {
+                logToConsole("[Self Destruct Mode Activated] 5...");
+                setTimeout(() => logToConsole("4..."), 1000);
+                setTimeout(() => logToConsole("3..."), 2000);
+                setTimeout(() => logToConsole("2..."), 3000);
+                setTimeout(() => logToConsole("1..."), 4000);
+                setTimeout(() => location.reload(), 5000);
+            }
+
+            else {
+                logToConsole("[ERROR] Unknown command.");
+            }
+
+            commandInput.value = "";
+        }
+
+        commandInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                executeCommand(commandInput.value.trim().toLowerCase());
+            }
+        });
+
+    </script>
+
+</body>
+</html>

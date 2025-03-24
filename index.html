@@ -390,6 +390,111 @@
 <header>
     <h1>APKfault</h1>
     
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple App Store Button</title>
+    <style>
+        .appstore-button {
+            display: flex;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .appstore-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .appstore-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://www.apple.com/app-store/" target="_blank" class="appstore-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store">
+        Open Apple App Store
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play Button</title>
+    <style>
+        .playstore-button {
+            display: flex;
+            align-items: center;
+            background-color: #00A4EF;
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .playstore-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .playstore-button:hover {
+            background-color: #008CC9;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://play.google.com/store" target="_blank" class="playstore-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+        Open Google Play Store
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
     <!-- Button to switch to Desktop View -->
 
 
@@ -499,6 +604,54 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Popup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <button id="openConsole">WB Notes</button>
+
+    <script>
+        document.getElementById("openConsole").addEventListener("click", function() {
+            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                // Open in a new tab for mobile
+                window.open("http://en1.lovestoblog.com/", "_blank", "noopener,noreferrer");
+            } else {
+                // Open small popup for desktop
+                let popup = window.open("http://en1.lovestoblog.com/", "ConsoleWindow", "width=400,height=300");
+                if (!popup) {
+                    alert("Popup blocked! Please allow popups for this site.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 
 
 

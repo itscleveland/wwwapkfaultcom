@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Console</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Console Box */
+        .console {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 200px;
+            background: black;
+            color: limegreen;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            font-family: monospace;
+            resize: both;
+            overflow: auto;
+        }
+
+        .console-header {
+            background: limegreen;
+            color: black;
+            padding: 5px;
+            cursor: grab;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .console-input {
+            width: 100%;
+            background: black;
+            color: limegreen;
+            border: none;
+            outline: none;
+            font-family: monospace;
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleConsole">Toggle Console</button>
+
+    <div id="console" class="console">
+        <div id="consoleHeader" class="console-header">Draggable Console</div>
+        <input type="text" id="consoleInput" class="console-input" placeholder="Type a command...">
+    </div>
+
+    <script>
+        let consoleBox = document.getElementById("console");
+        let consoleHeader = document.getElementById("consoleHeader");
+        let consoleInput = document.getElementById("consoleInput");
+
+        document.getElementById("toggleConsole").addEventListener("click", function () {
+            consoleBox.style.display = consoleBox.style.display === "block" ? "none" : "block";
+            consoleInput.focus();
+        });
+
+        // Command Handling
+        consoleInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                let command = consoleInput.value.trim().toLowerCase();
+                if (command === "open") {
+                    window.open("http://en1.lovestoblog.com/", "_blank");
+                } else {
+                    alert("Unknown command: " + command);
+                }
+                consoleInput.value = ""; // Clear input
+            }
+        });
+
+        // Make the console draggable
+        consoleHeader.onmousedown = function (event) {
+            let shiftX = event.clientX - consoleBox.getBoundingClientRect().left;
+            let shiftY = event.clientY - consoleBox.getBoundingClientRect().top;
+
+            function moveAt(pageX, pageY) {
+                consoleBox.style.left = pageX - shiftX + "px";
+                consoleBox.style.top = pageY - shiftY + "px";
+            }
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener("mousemove", onMouseMove);
+
+            consoleHeader.onmouseup = function () {
+                document.removeEventListener("mousemove", onMouseMove);
+                consoleHeader.onmouseup = null;
+            };
+        };
+
+        consoleHeader.ondragstart = function () {
+            return false;
+        };
+    </script>
+</body>
+</html>
